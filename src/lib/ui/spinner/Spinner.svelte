@@ -12,10 +12,10 @@
     height: h,
     viewBox = '0 0 24 24',
     size = '1em',
+    width = size,
+    height = size,
     ...rest
   }: Props = $props();
-  const width = w ?? size;
-  const height = h ?? size;
 </script>
 
 <svg

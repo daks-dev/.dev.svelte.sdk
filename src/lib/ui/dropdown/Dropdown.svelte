@@ -28,14 +28,13 @@
     base,
     links: items = [],
     inline = false,
-    sign: s,
+    sign = !isIcon(label),
     size = '1.25em',
     'aria-expanded': _0,
     'aria-haspopup': _1,
     'aria-controls': _2,
     ...rest
   }: Props = $props();
-  const sign = s ?? !isIcon(label);
 
   /*
   export let classWrapper: ClassName = undefined;

@@ -17,7 +17,7 @@
   };
   const {
     class: className,
-    date: d,
+    date: _date,
     parse,
     locale = 'ru-RU',
     year = 'numeric',
@@ -25,7 +25,7 @@
     day = 'numeric',
     ...rest
   }: Props = $props();
-  const date = typeof d === 'string' ? dayjs(d, parse).toDate() : d;
+  const date = typeof _date === 'string' ? dayjs(_date, parse).toDate() : _date;
 </script>
 
 <time

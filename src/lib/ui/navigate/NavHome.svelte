@@ -9,9 +9,9 @@
   import type { SvelteHTMLElements } from 'svelte/elements';
   type Props = Omit<SvelteHTMLElements['a'], 'class'> & {
     class?: ClassName;
-    brand: NavBrand;
+    brand?: NavBrand;
   };
-  const { children, class: className, brand, ...rest }: Props = $props();
+  const { children, class: className, brand = {}, ...rest }: Props = $props();
 
   const { custom = {}, label = 'home page', alt = '', size = '1.25em', home, inner } = brand;
 </script>

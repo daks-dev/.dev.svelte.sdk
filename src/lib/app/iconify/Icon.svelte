@@ -10,15 +10,13 @@
     class: className,
     icon,
     size,
-    width: w,
-    height: h,
+    width = size,
+    height = size,
     role = 'image',
     'aria-label': ariaLabel,
     'aria-hidden': ariaHidden,
     ...rest
   }: IconifyIconAttributes = $props();
-  const width = w ?? size;
-  const height = h ?? size;
 
   let visible = $state(false);
 

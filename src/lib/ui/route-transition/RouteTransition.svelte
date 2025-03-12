@@ -20,13 +20,13 @@
     refresh,
     class: className,
     mode = 0,
-    roots: r = ['/', '/admin', '/search'],
+    roots: _roots = ['/', '/admin', '/search'],
     tag = 'div',
     duration = 500,
     delay = 200,
     ...rest
   }: Props = $props();
-  const roots = typeof r === 'string' ? r.split(' ') : r;
+  const roots = typeof _roots === 'string' ? _roots.split(' ') : _roots;
 
   $routeTransitionMode = Number(mode);
 

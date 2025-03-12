@@ -9,7 +9,7 @@
     base?: string;
     target?: string | null;
     disallow?: boolean;
-    label?: string;
+    label?: string | null;
     icon?: string;
     size?: number | string;
     pointer?: boolean;
@@ -25,15 +25,14 @@
     role,
     itemprop,
     disallow,
-    label: l,
+    'aria-label': ariaLabel,
+    label = ariaLabel,
     icon,
     size,
     pointer = false,
     disabled = false,
-    'aria-label': ariaLabel,
     ...rest
   }: Props = $props();
-  const label = l ?? ariaLabel;
 
   const item = new Nav(
     {

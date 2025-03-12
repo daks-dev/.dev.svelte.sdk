@@ -19,16 +19,14 @@
     children,
     class: className,
     'aria-label': ariaLabel,
-    label: l,
+    label = ariaLabel ?? 'to top',
     icon = 'mdi:transfer-up',
     size = '1.75em',
     scrolled,
     duration = 200,
-    speed: s,
+    speed = duration * 5,
     ...rest
   }: Props = $props();
-  const label = l ?? ariaLabel ?? 'to top';
-  const speed = s ?? duration * 5;
 
   function handleClck(event: Event) {
     event.preventDefault();
