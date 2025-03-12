@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "check",
+      "problemMatcher": ["$tsc"],
+      "label": "check",
+      "detail": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+    },
+    {
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$tsc"],
+      "label": "lint",
+      "detail": "pnpm run lint"
+    },
+    {
+      "type": "npm",
+      "script": "format",
+      "problemMatcher": ["$tsc"],
+      "label": "format",
+      "detail": "pnpm run format"
+    },
+    {
+      "type": "npm",
+      "script": "package",
+      "problemMatcher": ["$tsc"],
+      "label": "package",
+      "detail": "svelte-kit sync && svelte-package && publint"
+    },
+    {
+      "type": "npm",
+      "script": "run:publish",
+      "problemMatcher": ["$tsc"],
+      "label": "publish",
+      "detail": "pnpm publish"
+    },
+    {
+      "type": "npm",
+      "script": "run:update",
+      "problemMatcher": ["$tsc"],
+      "label": "update",
+      "detail": "pnpm up"
+    }
+  ]
+}

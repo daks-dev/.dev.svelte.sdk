@@ -1,0 +1,26 @@
+@reference '../../../tailwind/';
+
+#ya-site-form [type='search']:focus ~ div {
+  @apply bottom-full bg-transparent opacity-100;
+}
+
+#ya-site-results.custom {
+  @apply origin-top bg-transparent text-slate-700 transition-all ease-in dark:text-slate-300;
+}
+
+#ya-site-results.custom > div[class^='results'] {
+  @apply opacity-0;
+}
+
+#ya-site-results.custom .b-head__r {
+  @apply p-0 align-middle;
+}
+
+#ya-site-results.custom .b-pager__arrow {
+  @apply xs:inline block text-sm;
+}
+
+#ya-site-results.custom .b-pager__current,
+#ya-site-results.custom .b-pager__select {
+  @apply rounded-sm bg-slate-400 px-1.5 pt-0.5 pb-1 text-slate-200;
+}

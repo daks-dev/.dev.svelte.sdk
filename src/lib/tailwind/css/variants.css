@@ -1,0 +1,17 @@
+/**
+ */
+
+@custom-variant dark (&.dark, .dark &);
+
+@custom-variant step (&[aria-current="step"]);
+@custom-variant page (&[aria-current="page"]);
+
+@custom-variant forced-colors (@media (forced-colors: active));
+
+@custom-variant onload (&.loaded, .loaded &);
+
+@custom-variant onscroll (&.scrolled, .scrolled &);
+
+@custom-variant oversee (&:where(:hover, :focus));
+@custom-variant peer-oversee (.peer:where(:hover, :focus) ~ &);
+@custom-variant group-oversee (.group:where(:hover, :focus) &);

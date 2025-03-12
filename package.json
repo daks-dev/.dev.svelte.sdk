@@ -1,0 +1,148 @@
+{
+  "name": "@daks.dev/svelte.sdk",
+  "version": "0.3.0",
+  "description": "DAKS.DEV Svelte SDK",
+  "scripts": {
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test": "vitest --ui",
+    "run:prettier": "prettier --plugin=prettier-plugin-svelte --plugin=prettier-plugin-tailwindcss",
+    "lint": "pnpm run:prettier --check . && eslint .",
+    "format": "pnpm run:prettier --write .",
+    "package": "svelte-kit sync && svelte-package && publint",
+    "prepublishOnly": "pnpm run package",
+    "run:publish": "pnpm publish",
+    "run:update": "pnpm up"
+  },
+  "devDependencies": {
+    "@iconify/svelte": "^4.2.0",
+    "@nanostores/persistent": "^0.10.2",
+    "@rollup/pluginutils": "^5.1.4",
+    "@sveltejs/kit": "^2.19.0",
+    "@sveltejs/package": "^2.3.10",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@tailwindcss/vite": "^4.0.12",
+    "@types/html-minifier-terser": "^7.0.2",
+    "@types/js-yaml": "^4.0.9",
+    "@vitest/ui": "^3.0.8",
+    "cookie": "^1.0.2",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.7",
+    "esm-env": "^1.2.2",
+    "html-minifier-terser": "^7.2.0",
+    "iconify-icon": "^2.3.0",
+    "js-yaml": "^4.1.0",
+    "nanostores": "^0.11.4",
+    "publint": "^0.3.9",
+    "svelte": "^5.22.6",
+    "svelte-check": "^4.1.5",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss": "^4.0.12",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.26.0",
+    "vanilla-lazyload": "^19.1.3",
+    "vite": "^6.2.1",
+    "vite-imagetools": "^7.0.5",
+    "vitest": "^3.0.8"
+  },
+  "peerDependencies": {
+    "@sveltejs/kit": "^2.19.0",
+    "svelte": "^5.22.6",
+    "tailwindcss": "^4.0.12"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "svelte": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts"
+    },
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.js"
+    },
+    "./server/*": {
+      "types": "./dist/server/*.d.ts",
+      "import": "./dist/server/*.js"
+    },
+    "./vite": {
+      "types": "./dist/server/vite.d.ts",
+      "import": "./dist/server/vite.js"
+    },
+    "./stores": {
+      "types": "./dist/stores/index.d.ts",
+      "import": "./dist/stores/index.js"
+    },
+    "./stores/*": {
+      "types": "./dist/stores/*.d.ts",
+      "import": "./dist/stores/*.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.js"
+    },
+    "./utils/*": {
+      "types": "./dist/utils/*.d.ts",
+      "import": "./dist/utils/*.js"
+    },
+    "./iconify/upload": {
+      "types": "./dist/app/iconify/server/upload.d.ts",
+      "import": "./dist/app/iconify/server/upload.js"
+    },
+    "./fonts/*": "./dist/assets/fonts/*",
+    "./icons/*": "./dist/assets/icons/*",
+    "./images/*": "./dist/assets/images/*",
+    "./styles/*": "./dist/assets/styles/*",
+    "./tailwind": "./dist/tailwind/index.css",
+    "./tailwind/*": "./dist/tailwind/*"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "engines": {
+    "node": ">=16.20.2",
+    "pnpm": ">=8.7.0"
+  },
+  "browserslist": [
+    "last 2 version",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daks-dev/svelte.git",
+    "directory": "packages/sdk"
+  },
+  "author": {
+    "name": "DVA",
+    "email": "mail@daks.dev",
+    "url": "https://daks.dev"
+  },
+  "bugs": "https://github.com/daks-dev/svelte/issues",
+  "homepage": "https://svelte.daks.dev",
+  "keywords": [
+    "svelte",
+    "sveltekit",
+    "tailwindcss",
+    "carousel",
+    "dropdown",
+    "iconify",
+    "imagetools",
+    "footer",
+    "lightbox",
+    "link",
+    "navbar",
+    "select",
+    "slider",
+    "spinner",
+    "vite-plugin",
+    "yandex"
+  ]
+}

@@ -1,0 +1,6 @@
+/**
+ */
+
+@import 'tailwindcss' source('../');
+
+@import './presets/common.css';

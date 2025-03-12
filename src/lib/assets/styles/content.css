@@ -1,0 +1,61 @@
+@reference '../../tailwind';
+
+@layer utilities {
+  :is(.content) {
+    > * + *:not(:where([class|='mt'], [class|='-mt'])) {
+      @apply oversee:decoration-current mt-5;
+    }
+
+    :where(h1, h2, h3, h4, h5, h6) {
+      &:not(:where([class|='mt'], [class|='-mt'])) {
+        @apply mt-7 first:mt-0;
+      }
+      &:not(:where([class|='mb'])) {
+        @apply mb-4;
+      }
+      + *:not(:where([class|='mt'], [class|='-mt'])) {
+        @apply mt-0;
+      }
+    }
+
+    a {
+      @apply oversee:decoration-current underline decoration-transparent underline-offset-4;
+      @apply transition-colors duration-300;
+    }
+
+    img {
+      @apply bg-linear-150 from-slate-500/20 to-slate-950 dark:from-slate-500/20 dark:to-slate-950;
+      @apply rounded-3xl border border-slate-600 dark:border-slate-400;
+      @apply shadow-xs dark:shadow-md dark:shadow-slate-700;
+    }
+
+    blockquote {
+      @apply ps-6;
+      @apply border-s-4 border-slate-500 dark:border-slate-500;
+      @apply font-mono leading-snug font-medium text-gray-700 dark:text-gray-300;
+    }
+
+    pre {
+      @apply px-3 py-2;
+      @apply font-mono text-sm leading-relaxed font-medium;
+      @apply rounded-md;
+    }
+
+    :where(table, th, td) {
+      @apply border-collapse border border-slate-400 dark:border-slate-500;
+    }
+    :where(th, td) {
+      @apply px-2 py-0.5;
+    }
+
+    ul {
+      @apply list-inside list-disc;
+    }
+    ol {
+      @apply list-inside list-decimal;
+    }
+    li > :where(ul, ol) {
+      @apply ml-4;
+    }
+  }
+}

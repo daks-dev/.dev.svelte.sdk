@@ -1,0 +1,66 @@
+/**
+ */
+
+@theme {
+  --breakpoint-bp: 50rem;
+  --breakpoint-xs: 30rem;
+  --breakpoint-3xl: 120rem;
+
+  --radius-5xl: 2.5rem;
+  --radius-6xl: 3rem;
+
+  --aspect-A4: 620 / 877;
+  --aspect-A4l: 877 / 620;
+
+  --inset-shadow-var: inset 0 0 0 1px var(--tw-shadow-color);
+
+  --drop-shadow-deep: 0 5px 3px rgb(0 0 0 / 0.5);
+  --drop-shadow-hard: 0 5px 3px rgb(0 0 0 / 0.8);
+}
+
+@import '../css/base.css';
+@import '../css/utilities.css';
+@import '../css/variants.css';
+
+@plugin '../plugins/config';
+
+@plugin '../plugins/grid-area';
+@plugin '../plugins/gradient';
+
+@plugin '../plugins/svg/vector-effect';
+
+@plugin '../plugins/frame';
+@plugin '../plugins/wrapper';
+
+:enabled,
+[enabled] {
+  @apply enabled;
+}
+:disabled,
+[disabled] {
+  @apply disabled;
+}
+
+@utility readable {
+  @apply text-base;
+  p:not(:last-child) {
+    margin-bottom: calc(var(--spacing, 0.25rem /* 4px */) * 1.5);
+  }
+  ul,
+  ol {
+    @apply list-inside pl-5 text-left -indent-5;
+  }
+  ul {
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
+}
+
+img:not([src]):not([srcset]) {
+  @apply invisible;
+}
+img.lazy-loaded {
+  @apply bg-none;
+}
