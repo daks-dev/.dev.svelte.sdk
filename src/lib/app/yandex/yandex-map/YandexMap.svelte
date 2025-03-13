@@ -1,9 +1,8 @@
 <script lang="ts">
   import { BROWSER } from 'esm-env';
-  import { onMount } from 'svelte';
-  // TODO:
-  // import { env } from '$env/dynamic/public';
   import { twMerge } from 'tailwind-merge';
+  import { onMount } from 'svelte';
+  import { PUBLIC_YA_API_MAPS } from '$env/static/public';
   import { uuid } from '../../../utils/index.js';
   import type { YandexMapInstance } from './index.d.ts';
 
@@ -24,8 +23,8 @@
     }
   };
 
-  export let apikey = process.env.PUBLIC_YA_API_MAPS;
-  export let lang = process.env.PUBLIC_APP_LANG ?? 'ru_RU';
+  export let apikey = PUBLIC_YA_API_MAPS;
+  export let lang = 'ru_RU';
   const params = new URLSearchParams({
     lang,
     ...(apikey ? { apikey } : {})

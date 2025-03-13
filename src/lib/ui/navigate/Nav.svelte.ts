@@ -69,7 +69,7 @@ class Nav implements NavItem {
     return props;
   };
 
-  static map = function (items?: NavItem[], fully = false, base = '') {
+  static map = function (items?: NavItem[], fully = false, base = ''): string[] {
     return items?.length
       ? items.reduce((map, item) => {
         if (!item.disallow || fully) {

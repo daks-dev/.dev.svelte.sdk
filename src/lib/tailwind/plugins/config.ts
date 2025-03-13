@@ -1,5 +1,11 @@
 import plugin from 'tailwindcss/plugin.js';
 
+import 'dotenv/config';
+const breakpoint = Number(process.env.PUBLIC_BREAKPOINT);
+const screens = isNaN(breakpoint) ? undefined : {
+  bp: `${breakpoint}px`
+};
+
 const r = (x: number, n = 4): number => {
   const f = Math.pow(10, n);
   return Math.round(x * f) / f;
@@ -12,9 +18,10 @@ const f = (x: number, d = 0.25) => [
   }
 ];
 
-export default plugin(() => {}, {
+export default plugin(() => { }, {
   theme: {
     extend: {
+      screens,
       spacing: {
         inherit: 'inherit',
         unset: 'unset'

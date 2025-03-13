@@ -1,10 +1,9 @@
 <script lang="ts">
-  // TODO:
-  // import { env } from '$env/dynamic/public';
+  import { twMerge } from 'tailwind-merge';
+  import { PUBLIC_BREAKPOINT } from '$env/static/public';
   import { beforeNavigate, afterNavigate } from '$app/navigation';
   import Nav from '../../ui/navigate/Nav.svelte.js';
   import Swiping from '../../ui/swiping/Swiping.svelte';
-  import { twMerge } from 'tailwind-merge';
   import NavbarMenu from './NavbarMenu.svelte';
   import NavbarWrapper from './NavbarWrapper.svelte';
   import ToggleMenu from './components/ToggleMenu.svelte';
@@ -24,7 +23,7 @@
   export let duration = 300;
 
   let innerWidth: number = 0;
-  const breakpoint = Number(process.env.PUBLIC_BREAKPOINT);
+  const breakpoint = Number(PUBLIC_BREAKPOINT);
   $: hidden = innerWidth < (isNaN(breakpoint) ? 800 : breakpoint);
 
   const close = () => (hidden = true);

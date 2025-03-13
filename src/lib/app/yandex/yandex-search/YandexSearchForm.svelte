@@ -1,6 +1,7 @@
 <script lang="ts">
   import { twMerge } from 'tailwind-merge';
   import { onMount } from 'svelte';
+  import { PUBLIC_YA_SEARCHID } from '$env/static/public';
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import Icon from '../../iconify/Icon.svelte';
@@ -15,7 +16,7 @@
   export let button = true;
   export let callback: null | (() => void) = null;
 
-  const searchid = process.env.PUBLIC_YA_SEARCHID;
+  const searchid = PUBLIC_YA_SEARCHID;
 
   let form: HTMLFormElement;
   let text: null | string;

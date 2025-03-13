@@ -1,17 +1,26 @@
 <script lang="ts">
+  import { PUBLIC_APP_CANONICAL } from '$env/static/public';
   import { page } from '$app/state';
 
-  type AppMeta = Record<'themeColor' | 'tileColor' | 'shortName', string>;
-
-  export let app: Partial<AppMeta> = {};
-
-  export let robots =
-    'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
-  export let title: string | undefined = undefined;
-  export let description: string | undefined = undefined;
-  export let canonical =
-    process.env.PUBLIC_APP_CANONICAL &&
-    `${new URL(process.env.PUBLIC_APP_CANONICAL).origin}${page.url.pathname}`;
+  type Props = {
+    app?: {
+      themeColor?: string;
+      tileColor?: string;
+      shortName?: string;
+    };
+    robots?: string;
+    title?: string;
+    description?: string;
+    canonical?: string;
+  };
+  const {
+    app,
+    robots = 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+    title,
+    description,
+    canonical = PUBLIC_APP_CANONICAL &&
+      `${new URL(PUBLIC_APP_CANONICAL).origin}${page.url.pathname}`
+  }: Props = $props();
 </script>
 
 <svelte:head>

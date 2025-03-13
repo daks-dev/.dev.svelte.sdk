@@ -1,8 +1,7 @@
 <script lang="ts">
-  // TODO:
-  // import { env } from '$env/dynamic/public';
-  import Icon from '../../app/iconify/Icon.svelte';
   import { twMerge } from 'tailwind-merge';
+  import { PUBLIC_APP_CANONICAL } from '$env/static/public';
+  import Icon from '../../app/iconify/Icon.svelte';
 
   let className: ClassName = undefined;
   export { className as class };
@@ -19,9 +18,7 @@
   };
   const { itemtype, name, logo, email, telephone, address } = microdata.organization;
 
-  const canonical = process.env.PUBLIC_APP_CANONICAL
-    ? new URL(process.env.PUBLIC_APP_CANONICAL).origin
-    : '';
+  const canonical = PUBLIC_APP_CANONICAL ? new URL(PUBLIC_APP_CANONICAL).origin : '';
 </script>
 
 <div
