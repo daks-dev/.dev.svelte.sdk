@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import { blur, fly } from 'svelte/transition';
   import { sineIn, sineOut } from 'svelte/easing';
   import { navigating } from '$app/state';

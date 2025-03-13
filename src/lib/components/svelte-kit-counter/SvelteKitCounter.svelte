@@ -6,7 +6,7 @@
   import { blur } from 'svelte/transition';
   import Icon from '../../app/iconify/Icon.svelte';
   import placeholder from '../../assets/images/placeholder.js';
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import { svelteKitCount as count } from '$lib/stores/index.js';
 
   import image from '../../assets/images/svelte/kit.machine.webp?w=512&meta';

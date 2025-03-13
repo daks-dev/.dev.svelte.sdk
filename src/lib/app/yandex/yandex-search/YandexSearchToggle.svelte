@@ -1,11 +1,11 @@
 <script lang="ts">
+  import { twMerge } from '../../../tailwind/tailwind-merge.js';
   import { fly } from 'svelte/transition';
   import { sineInOut } from 'svelte/easing';
   // TODO:
   import { page } from '$app/stores';
   import { outside, uuid } from '../../../utils/index.js';
   import Icon from '../../iconify/Icon.svelte';
-  import { twMerge } from 'tailwind-merge';
   import YandexSearchForm from './YandexSearchForm.svelte';
 
   let className: ClassName = undefined;

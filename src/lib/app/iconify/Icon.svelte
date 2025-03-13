@@ -1,6 +1,6 @@
 <script lang="ts">
   import { BROWSER } from 'esm-env';
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import { onMount } from 'svelte';
   import Icon from '@iconify/svelte';
 

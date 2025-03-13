@@ -1,6 +1,6 @@
 <script lang="ts">
   import Nav from '../../ui/navigate/index.js';
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Link from '../../ui/navigate/Link.svelte';
   import { sessionTime } from '../../stores/index.js';
   import type { NavItem } from '../../ui/navigate/index.d.ts';

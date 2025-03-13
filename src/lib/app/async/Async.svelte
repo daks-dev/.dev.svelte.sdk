@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from '../iconify/Icon.svelte';
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
 
   let className: ClassName = 'w-48';
   export { className as class };

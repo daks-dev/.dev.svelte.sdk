@@ -3,7 +3,7 @@
   import custom from 'dayjs/plugin/customParseFormat.js';
   dayjs.extend(custom);
 
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
 
   import type { HTMLTimeAttributes } from 'svelte/elements';
   type Props = Omit<HTMLTimeAttributes, 'class'> & {

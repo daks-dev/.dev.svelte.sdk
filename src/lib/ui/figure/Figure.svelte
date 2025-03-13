@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import placeholder from '../../assets/images/placeholder.js';
   import type { Snippet } from 'svelte';
 

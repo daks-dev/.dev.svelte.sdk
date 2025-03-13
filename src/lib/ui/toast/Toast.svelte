@@ -4,7 +4,7 @@
   import { fly } from 'svelte/transition';
   import { sineIn, sineOut } from 'svelte/easing';
   import { beforeNavigate } from '$app/navigation';
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
 
   let className: ClassName = undefined;
   export { className as class };

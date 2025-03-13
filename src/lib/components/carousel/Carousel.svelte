@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import { onMount } from 'svelte';
   import { tweened } from 'svelte/motion';
   import { linear, quadInOut } from 'svelte/easing';

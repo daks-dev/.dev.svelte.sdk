@@ -1,6 +1,6 @@
 <script lang="ts">
   import { BROWSER } from 'esm-env';
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../../tailwind/tailwind-merge.js';
   import { onMount } from 'svelte';
   import { PUBLIC_YA_API_MAPS } from '$env/static/public';
   import { uuid } from '../../../utils/index.js';

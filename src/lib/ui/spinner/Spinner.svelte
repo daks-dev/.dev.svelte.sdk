@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
 
   import type { SvelteHTMLElements } from 'svelte/elements';
   type Props = Omit<SvelteHTMLElements['svg'], 'class'> & {

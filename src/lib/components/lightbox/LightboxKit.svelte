@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Figure from '../../ui/figure/Figure.svelte';
   import Sign from '../../ui/sign/Sign.svelte';
   import LightboxList from './LightboxList.svelte';

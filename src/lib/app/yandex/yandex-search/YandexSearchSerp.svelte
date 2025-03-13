@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { twMerge } from '../../../tailwind/tailwind-merge.js';
   import { onMount } from 'svelte';
   import { afterNavigate } from '$app/navigation';
-  import { twMerge } from 'tailwind-merge';
   import './index.css';
 
   let className: ClassName = undefined;

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import Figure from '../../ui/figure/Figure.svelte';
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import type { Custom } from './index.d.ts';
 
   let className: ClassName = undefined;

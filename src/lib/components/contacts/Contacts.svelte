@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import { PUBLIC_APP_CANONICAL } from '$env/static/public';
   import Icon from '../../app/iconify/Icon.svelte';
 

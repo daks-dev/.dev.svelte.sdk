@@ -1,6 +1,6 @@
 <script lang="ts">
+  import { twMerge } from '../../../tailwind/tailwind-merge.js';
   import Nav from '../../../ui/navigate/Nav.svelte.js';
-  import { twMerge } from 'tailwind-merge';
   import Link from '../../../ui/navigate/Link.svelte';
   import type { NavItem } from '../../../ui/navigate/index.d.ts';
 

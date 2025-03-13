@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import { PUBLIC_BREAKPOINT } from '$env/static/public';
   import { beforeNavigate, afterNavigate } from '$app/navigation';
   import Nav from '../../ui/navigate/Nav.svelte.js';

@@ -1,10 +1,9 @@
 import plugin from 'tailwindcss/plugin.js';
+import defaultTheme from 'tailwindcss/defaultTheme.js';
+//import colors from 'tailwindcss/colors';
 
 import 'dotenv/config';
 const breakpoint = Number(process.env.PUBLIC_BREAKPOINT);
-const screens = isNaN(breakpoint) ? undefined : {
-  bp: `${breakpoint}px`
-};
 
 const r = (x: number, n = 4): number => {
   const f = Math.pow(10, n);
@@ -21,7 +20,9 @@ const f = (x: number, d = 0.25) => [
 export default plugin(() => { }, {
   theme: {
     extend: {
-      screens,
+      screens: {
+        bp: isNaN(breakpoint) ? defaultTheme.screens.md : `${breakpoint}px`
+      },
       spacing: {
         inherit: 'inherit',
         unset: 'unset'

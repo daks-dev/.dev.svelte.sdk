@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import { timer, timerFormat as format } from '../../stores/persistent.js';
 
   import type { HTMLTimeAttributes } from 'svelte/elements';

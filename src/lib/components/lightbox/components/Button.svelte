@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../../tailwind/tailwind-merge.js';
   import type { Options } from '../index.d.ts';
 
   type Props = {

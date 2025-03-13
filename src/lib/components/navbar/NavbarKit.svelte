@@ -1,6 +1,6 @@
 <script lang="ts">
   import Nav from '../../ui/navigate/Nav.svelte.js';
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   // TODO:
   import NavHome from '../../ui/navigate/NavHome.svelte';
   import NavToTop from '../../ui/navigate/NavToTop.svelte';

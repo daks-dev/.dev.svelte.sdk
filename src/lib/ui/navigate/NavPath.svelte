@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import { beforeNavigate } from '$app/navigation';
   import { navigate } from '../../stores/index.js';
   import Icon from '../../app/iconify/Icon.svelte';

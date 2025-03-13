@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from 'tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Gallery from './Gallery.svelte';
   import type { Custom } from './index.d.ts';
 
