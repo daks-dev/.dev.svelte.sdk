@@ -152,7 +152,7 @@
 
 <svelte:window bind:innerWidth />
 
-<div class={twMerge('linecap-round linejoin-round vector-non-scaling-stroke', className)}>
+<div class={twMerge('vector-non-scaling-stroke linecap-round linejoin-round', className)}>
   <div class="relative w-full">
     <div
       bind:this={carousel}

@@ -7,6 +7,12 @@ const config: any = {
       spacing: ['inherit', 'unset']
     },
     classGroups: {
+      container: [
+        {
+          frame: ['', 'sm', 'md', 'lg', 'xl', '2xl', (x: string) => Number(x) > 0],
+          wrapper: ['', 'sm', 'md', 'lg', 'xl', '2xl', (x: string) => Number(x) > 0]
+        }
+      ],
       aspect: [
         {
           aspect: ['A4', 'A4l']
@@ -66,17 +72,11 @@ const config: any = {
         {
           'text-shadow': ['', 'none', (x: string) => Number(x) > 0]
         }
-      ],
-      containers: [
-        {
-          frame: ['', 'sm', 'md', 'lg', 'xl', '2xl', (x: string) => Number(x) > 0],
-          wrapper: ['', 'sm', 'md', 'lg', 'xl', '2xl', (x: string) => Number(x) > 0]
-        }
       ]
     },
     conflictingClassGroups: {
-      container: ['containers'],
-      containers: ['container']
+      // container: ['containers'],
+      // containers: ['container']
     }
   }
 };

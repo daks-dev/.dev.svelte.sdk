@@ -72,7 +72,7 @@
     'flex items-center justify-center',
     'not-prose text-base leading-none',
     'bg-black/90',
-    'linecap-round linejoin-round vector-non-scaling-stroke',
+    'vector-non-scaling-stroke linecap-round linejoin-round',
     'clear-pseudo select-none',
     'overflow-y-offset',
     options.clickableClose && 'hover:cursor-zoom-out',

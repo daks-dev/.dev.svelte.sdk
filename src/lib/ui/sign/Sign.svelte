@@ -31,7 +31,7 @@
     dark && 'bg-black/20',
     auto && 'bg-black/20 dark:bg-white/20',
     link ? 'text-sky-600 dark:text-sky-400' : 'text-white',
-    'group-oversee:opacity-100 opacity-70',
+    'opacity-70 group-oversee:opacity-100',
     'group-oversee:mt-1 group-oversee:animate-bounce',
     className
   ]}

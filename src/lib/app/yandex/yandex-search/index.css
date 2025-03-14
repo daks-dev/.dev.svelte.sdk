@@ -17,7 +17,7 @@
 }
 
 #ya-site-results.custom .b-pager__arrow {
-  @apply xs:inline block text-sm;
+  @apply block text-sm xs:inline;
 }
 
 #ya-site-results.custom .b-pager__current,

@@ -15,8 +15,8 @@
   custom.item = twMerge(custom.item, (grayscale || invert) && 'group');
   (custom.inner ??= {}).image = twMerge(
     custom.inner?.image,
-    grayscale && 'group-oversee:grayscale-0 grayscale',
-    invert && 'group-oversee:invert-0 invert'
+    grayscale && 'grayscale group-oversee:grayscale-0',
+    invert && 'invert group-oversee:invert-0'
   );
 
   export let native = false;

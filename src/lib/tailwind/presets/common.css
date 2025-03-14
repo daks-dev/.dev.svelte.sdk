@@ -32,12 +32,10 @@
 @plugin '../plugins/frame';
 @plugin '../plugins/wrapper';
 
-:enabled,
-[enabled] {
+:is(:enabled, [enabled]) {
   @apply enabled;
 }
-:disabled,
-[disabled] {
+:is(:disabled, [disabled]) {
   @apply disabled;
 }
 
@@ -60,9 +58,11 @@
 }
 */
 
-img:not([src]):not([srcset]) {
-  @apply invisible;
-}
-img.lazy-loaded {
-  @apply bg-none;
+:is(img) {
+  &:where(:not([src], [srcset])) {
+    @apply invisible;
+  }
+  &:where(.lazy-loaded) {
+    @apply bg-none;
+  }
 }

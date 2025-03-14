@@ -61,10 +61,10 @@
         {#each links as link}
           <Link
             class="
-              step:text-slate-700
-              page:text-cyan-700
-              dark:step:text-slate-300 px-2
-              text-right hover:text-sky-500 dark:hover:text-sky-300"
+              px-2
+              text-right
+              hover:text-sky-500 dark:hover:text-sky-300
+              step:text-slate-700 dark:step:text-slate-300 page:text-cyan-700"
             {...Nav.props(link)}
             size="1.5em" />
         {/each}

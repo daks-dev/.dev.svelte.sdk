@@ -24,7 +24,7 @@
     'font-normal tracking-wide uppercase',
     'max-bp:rounded-md max-bp:shadow-md',
     'max-bp:aria-hidden:scale-75 max-bp:aria-hidden:opacity-0 max-bp:aria-hidden:disabled',
-    'onload:transition origin-top-left',
+    'origin-top-left onload:transition',
     // 'first:rounded-t-md last:rounded-b-md',
     className
   )}

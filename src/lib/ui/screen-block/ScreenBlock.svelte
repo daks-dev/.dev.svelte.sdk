@@ -48,7 +48,7 @@
     'fixed top-0 left-0 z-50 h-screen w-screen',
     'flex items-center justify-center',
     'transition-opacity ease-out',
-    image && 'bg-25% sm:bg-10% lg:bg-5% bg-center bg-no-repeat',
+    image && 'bg-25% bg-center bg-no-repeat sm:bg-10% lg:bg-5%',
     className
   )}
   style:background-image={image ? `url(${image})` : undefined}
