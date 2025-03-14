@@ -1,5 +1,5 @@
 @reference './lib/tailwind/';
 
 .test {
-  @apply page:text-red-700;
+  @apply poi page:text-red-700;
 }

@@ -29,11 +29,13 @@
     @apply transition-colors duration-300;
   }
 
+  /*
   :where(img) {
     @apply bg-linear-150 from-slate-500/20 to-slate-950 dark:from-slate-500/20 dark:to-slate-950;
     @apply rounded-3xl border border-slate-600 dark:border-slate-400;
     @apply shadow-xs dark:shadow-md dark:shadow-slate-700;
   }
+ */
 
   :where(blockquote) {
     @apply ps-6;
