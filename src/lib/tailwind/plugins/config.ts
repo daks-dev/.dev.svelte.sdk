@@ -17,7 +17,7 @@ const f = (x: number, d = 0.25) => [
   }
 ];
 
-export default plugin(() => { }, {
+export default plugin(() => {}, {
   theme: {
     extend: {
       screens: {

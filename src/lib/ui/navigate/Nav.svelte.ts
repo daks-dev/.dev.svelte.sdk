@@ -72,13 +72,13 @@ class Nav implements NavItem {
   static map = function (items?: NavItem[], fully = false, base = ''): string[] {
     return items?.length
       ? items.reduce((map, item) => {
-        if (!item.disallow || fully) {
-          const href = `${item.base ?? base}${item.href ?? ''}`;
-          item.href && map.push(href);
-          item.links && map.push(...Nav.map(item.links, fully, href));
-        }
-        return map;
-      }, Array(0))
+          if (!item.disallow || fully) {
+            const href = `${item.base ?? base}${item.href ?? ''}`;
+            item.href && map.push(href);
+            item.links && map.push(...Nav.map(item.links, fully, href));
+          }
+          return map;
+        }, Array(0))
       : [];
   };
 }

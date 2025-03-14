@@ -94,11 +94,11 @@
       "import": "./dist/app/iconify/server/upload.js"
     },
     "./tailwind": "./dist/tailwind/index.css",
-    "./tailwind/tailwind-merge": {
+    "./tailwind/*": "./dist/tailwind/*",
+    "./tailwind-merge": {
       "types": "./dist/tailwind/tailwind-merge.d.ts",
       "import": "./dist/tailwind/tailwind-merge.js"
     },
-    "./tailwind/*": "./dist/tailwind/*",
     "./fonts/*": "./dist/assets/fonts/*",
     "./icons/*": "./dist/assets/icons/*",
     "./images/*": "./dist/assets/images/*",
