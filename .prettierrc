@@ -13,12 +13,29 @@
   "bracketSameLine": true,
   "vueIndentScriptAndStyle": false,
   "embeddedLanguageFormatting": "auto",
-  "tailwindAttributes": ["class", "custom", "className", "ngClass"],
-  "tailwindFunctions": ["twMerge", "twJoin", "classnames", "clsx", "ctl"],
-  "plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
+  "tailwindStylesheet": "./src/lib/tailwind/index.css",
+  "tailwindAttributes": [
+    "class",
+    "custom",
+    "className",
+    "ngClass"
+  ],
+  "tailwindFunctions": [
+    "twMerge",
+    "twJoin",
+    "classnames",
+    "clsx",
+    "ctl"
+  ],
+  "plugins": [
+    "prettier-plugin-svelte",
+    "prettier-plugin-tailwindcss"
+  ],
   "overrides": [
     {
-      "files": ["**/*.svelte"],
+      "files": [
+        "**/*.svelte"
+      ],
       "options": {
         "parser": "svelte"
       }
