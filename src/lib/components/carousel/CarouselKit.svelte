@@ -1,6 +1,7 @@
 <script lang="ts">
   import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Carousel from './Carousel.svelte';
+  import type { SvelteComponent } from 'svelte';
   import type { Custom, Loaded } from './index.d.ts';
 
   let className: ClassName = undefined;
