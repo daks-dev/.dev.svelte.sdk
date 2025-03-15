@@ -5,22 +5,22 @@
 
   import type { SvelteHTMLElements } from 'svelte/elements';
   type Props = Omit<SvelteHTMLElements['figure'], 'class'> & {
+    data?: unknown;
     class?: ClassName;
     alt?: string;
     native?: boolean;
     custom?: Record<string, ClassName>;
-    data?: unknown;
     loaded?: (x?: Event | HTMLElement) => void;
     before?: Snippet;
     after?: Snippet;
   };
   const {
     children,
+    data,
     class: className,
-    alt = '',
+    alt,
     custom = {},
     native = false,
-    data = {},
     loaded,
     before,
     after,

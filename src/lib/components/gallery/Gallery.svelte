@@ -6,22 +6,23 @@
 
   let className: ClassName = undefined;
   export { className as class };
-
   export let custom: Partial<Custom> = {};
   custom.caption = twMerge('flex flex-col pt-2', custom.caption);
 
-  export let dataset: ImageMetadata[];
+  export let alt: string = '';
 
+  export let dataset: ImageMetadata[];
   export let native = false;
 
   if (!native) onMount(() => document?.lazyload.update());
 </script>
 
 <div class={twMerge(className)}>
-  {#each dataset as data}
+  {#each dataset as data, idx}
     <Figure
       {data}
       class={twMerge('flex flex-col', custom.item)}
+      alt={`${alt} [${idx}]`.trim()}
       {custom}
       {native} />
     {#if !native}

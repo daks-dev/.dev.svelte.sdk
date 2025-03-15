@@ -1,6 +1,6 @@
-@reference '../../tailwind';
+@reference '../';
 
-.readable {
+@utility readable {
   @apply bp:text-lg text-sm sm:text-base;
 
   > :where(:not(:last-child)) {
@@ -8,7 +8,7 @@
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
-    @apply mb-2;
+    @apply text-left;
     &:where(:not(:first-child)) {
       @apply mt-8;
     }

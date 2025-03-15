@@ -14,6 +14,8 @@
   let className: ClassName = undefined;
   export { className as class };
 
+  export let alt: string = '';
+
   export let custom: Partial<Custom> = {};
   custom = Object.assign(
     {
@@ -174,8 +176,9 @@
         style:height={ratio ? `${width / ratio}px` : ''}
         style:width="{width * total}px"
         style:transform="translate3d(-{width * $tween}px, 0px, 0px)">
-        {#each dataset as data}
+        {#each dataset as data, idx}
           <Figure
+            {data}
             class={custom.item}
             style="width:{width}px"
             custom={{
@@ -187,7 +190,7 @@
               ),
               caption: custom.inner?.caption
             }}
-            {data}
+            alt={`${alt} [${idx}]`.trim()}
             {native}
             {loaded} />
         {/each}

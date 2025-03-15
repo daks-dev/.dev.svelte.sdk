@@ -5,8 +5,9 @@
 
   let className: ClassName = undefined;
   export { className as class };
-
   export let custom: Partial<Custom> = {};
+
+  export let alt: string = '';
 
   export let dataset: ImageMetadata[] = [];
 
@@ -47,4 +48,5 @@
       (shadow || scale) && (adaptive ? 'mt-4' : 'mt-2')
     )
   }}
+  {alt}
   {native} />

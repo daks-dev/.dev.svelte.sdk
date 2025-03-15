@@ -8,11 +8,13 @@
   import type { SignOptions } from '../../ui/sign/index.d.ts';
   import type { Options, Custom, Loader } from './index.d.ts';
 
+  export let sources: ImageMetainfo[];
+  export let thumbnails: ImageMetainfo[];
+
   let className: ClassName = undefined;
   export { className as class };
 
-  export let sources: ImageMetainfo[];
-  export let thumbnails: ImageMetainfo[];
+  export let alt: string = '';
 
   export let native = false;
 
@@ -78,6 +80,7 @@
               custom.inner?.caption
             )
           }}
+          alt={`${alt} [${idx}]`.trim()}
           {native} />
         <link
           rel="image"

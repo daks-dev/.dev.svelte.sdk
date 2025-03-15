@@ -7,6 +7,8 @@
   export { className as class };
   export let custom: Partial<Custom> = {};
 
+  export let alt: string = '';
+
   export let dataset: ImageMetainfo[];
 
   export let grayscale = false;
@@ -27,9 +29,10 @@
 </script>
 
 <Carousel
+  {dataset}
   class={className}
   {custom}
-  {dataset}
+  {alt}
   {native}
   {loaded}
   {...$$restProps}>
