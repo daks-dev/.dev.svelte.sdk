@@ -71,7 +71,7 @@
 }
 
 @utility content-empty {
-  content: '""';
+  content: '';
 }
 
 @utility clear-pseudo {
