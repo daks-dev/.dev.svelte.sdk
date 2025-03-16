@@ -20,7 +20,7 @@ const config: any = {
       ],
       'bg-image': [
         {
-          bg: ['loading', 'waiting']
+          bg: ['-loading', '-waiting']
         }
       ],
       content: [

@@ -71,7 +71,7 @@
 }
 
 @utility content-empty {
-  content: '';
+  content: '""';
 }
 
 @utility clear-pseudo {
@@ -129,9 +129,4 @@
   padding-left: 1rem;
   padding-right: 1rem;
   line-height: 1;
-}
-
-@utility readable {
-  font-size: inherit;
-  line-height: inherit;
 }
