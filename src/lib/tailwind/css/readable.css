@@ -1,67 +1,71 @@
 /**
+  @reference '../';
  */
 
-@utility readable {
-  @apply bp:text-lg text-sm sm:text-base;
+@layer utilities {
+  :is(.readable) {
+    @apply bp:text-lg text-sm sm:text-base;
 
-  > :where(:not(:last-child)) {
-    @apply mb-4;
-  }
-
-  :where(h1, h2, h3, h4, h5, h6) {
-    @apply text-left;
-    &:where(:not(:first-child)) {
-      @apply mt-8;
-    }
-  }
-
-  :where(a) {
-    @apply underline decoration-transparent underline-offset-4;
-    @apply transition-colors duration-300;
-  }
-
-  :where(:not(a)) {
-    @apply oversee:decoration-current;
-  }
-
-  :where(blockquote) {
-    @apply ps-6;
-    @apply border-s-4 border-slate-500 dark:border-slate-500;
-    @apply font-mono leading-snug font-medium text-gray-700 dark:text-gray-300;
-  }
-
-  :where(pre) {
-    @apply px-3 py-2;
-    @apply font-mono text-sm leading-relaxed font-medium;
-    @apply rounded-md;
-  }
-
-  :where(table, th, td) {
-    @apply border-collapse border border-slate-400 dark:border-slate-500;
-  }
-  :where(th, td) {
-    @apply px-2.5 py-2;
-  }
-  :where(th) {
-    @apply align-top;
-  }
-
-  :where(ul, ol) {
-    @apply list-inside;
-  }
-  :where(ul, ol) {
-    @apply ml-4;
-  }
-  :where(ul) {
-    @apply list-disc;
-  }
-  :where(ol) {
-    @apply list-decimal;
-  }
-  :where(li) {
-    @apply pl-4 text-left -indent-6;
-    &:where(:not(:last-child)) {
+    > :where(:not(:last-child)) {
       @apply mb-4;
+    }
+
+    :where(h1, h2, h3, h4, h5, h6) {
+      @apply text-left;
+      &:where(:not(:first-child)) {
+        @apply mt-8;
+      }
+    }
+
+    :where(a) {
+      @apply underline decoration-transparent underline-offset-4;
+      @apply transition-colors duration-300;
+    }
+
+    :where(:not(a)) {
+      @apply oversee:decoration-current;
+    }
+
+    :where(blockquote) {
+      @apply ps-6;
+      @apply border-s-4 border-slate-500 dark:border-slate-500;
+      @apply font-mono leading-snug font-medium text-gray-700 dark:text-gray-300;
+    }
+
+    :where(pre) {
+      @apply px-3 py-2;
+      @apply font-mono text-sm leading-relaxed font-medium;
+      @apply rounded-md;
+    }
+
+    :where(table, th, td) {
+      @apply border-collapse border border-slate-400 dark:border-slate-500;
+    }
+    :where(th, td) {
+      @apply px-2.5 py-2;
+    }
+    :where(th) {
+      @apply align-top;
+    }
+
+    :where(ul, ol) {
+      @apply ml-4;
+      @apply list-inside;
+      :where(ul, ol) {
+        @apply mt-4;
+      }
+    }
+    :where(ul) {
+      @apply list-disc;
+    }
+    :where(ol) {
+      @apply list-decimal;
+    }
+    :where(li) {
+      @apply pl-4 text-left -indent-6;
+      &:where(:not(:last-child)) {
+        @apply mb-4;
+      }
     }
   }
 }

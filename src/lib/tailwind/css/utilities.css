@@ -130,3 +130,8 @@
   padding-right: 1rem;
   line-height: 1;
 }
+
+@utility readable {
+  font-size: inherit;
+  line-height: inherit;
+}

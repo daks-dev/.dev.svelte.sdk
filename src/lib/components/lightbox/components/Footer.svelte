@@ -17,7 +17,7 @@
   class:fullscreen>
   <div
     class={twMerge(
-      'min-h-24 sm:min-h-12',
+      'min-h-24 pt-1 sm:min-h-12',
       'grid grid-cols-2 items-center gap-2',
       'text-white/50 hover:text-white',
       'cursor-default',
