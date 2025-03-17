@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Figure from '../../ui/figure/Figure.svelte';
   import Sign from '../../ui/sign/Sign.svelte';
   import LightboxList from './LightboxList.svelte';
@@ -44,26 +43,26 @@
 </script>
 
 <LightboxList
-  class={twMerge(
+  class={[
     grid ? 'grid grid-cols-none ' : 'flex flex-wrap',
     centered && 'justify-center',
     className
-  )}
+  ]}
   {custom}
   {options}
   {loader}
   {...$$restProps}>
   <svelte:fragment slot="thumbnail">
     {#each thumbnails as data, idx}
-      <LightboxThumbnail class={twMerge(sign && 'group relative')}>
+      <LightboxThumbnail class={sign && 'group relative'}>
         {#if _sign}
           <Sign {..._sign} />
         {/if}
         <Figure
           {data}
-          class={twMerge('relative flex flex-col', centered && 'items-center', custom.item)}
+          class={['relative flex flex-col', centered && 'items-center', custom.item]}
           custom={{
-            image: twMerge(
+            image: [
               adaptive && 'h-auto w-full max-w-full object-contain',
               rounded && 'rounded',
               shadow && 'shadow-md hover:shadow-lg',
@@ -72,13 +71,13 @@
               invert && 'invert hover:invert-0',
               (shadow || scale || grayscale || invert) && 'transition duration-300 ease-in-out',
               custom.inner?.image
-            ),
-            caption: twMerge(
+            ],
+            caption: [
               'flex flex-col pt-2',
               centered && 'text-center',
               (shadow || scale) && (adaptive ? 'mt-4' : 'mt-2'),
               custom.inner?.caption
-            )
+            ]
           }}
           alt={`${alt} [${idx}]`.trim()}
           {native} />

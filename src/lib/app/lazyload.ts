@@ -13,7 +13,7 @@ export function lazyload(
   elements?: NodeListOf<HTMLElement>
 ): ILazyLoadInstance {
   // FIXME:
-  //@ts-ignore
+  // @ts-ignore
   return new LazyLoad(
     Object.assign(
       {

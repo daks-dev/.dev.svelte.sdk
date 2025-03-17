@@ -40,11 +40,10 @@
   <img
     onload={handleLoad}
     class={twMerge(
-      !native && 'bg--loading bg-25% bg-center bg-no-repeat',
+      !native && ['lazy', 'bg--loading bg-25% bg-center bg-no-repeat'],
       'bg-neutral-300',
       custom.image
     )}
-    class:lazy={!native}
     src={native ? src : placeholder}
     data-src={native ? undefined : src}
     {width}
