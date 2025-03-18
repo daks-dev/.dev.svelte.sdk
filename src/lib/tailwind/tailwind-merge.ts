@@ -1,4 +1,4 @@
-import { twJoin, extendTailwindMerge } from 'tailwind-merge';
+import { extendTailwindMerge } from 'tailwind-merge';
 
 const config: any = {
   extend: {
@@ -18,11 +18,6 @@ const config: any = {
           aspect: ['A4', 'A4l']
         }
       ],
-      'bg-image': [
-        {
-          bg: ['-loading', '-waiting']
-        }
-      ],
       content: [
         {
           content: ['empty']
@@ -36,21 +31,6 @@ const config: any = {
       'font-size': [
         {
           text: ['3xs', '2xs', '1.5xl', '2.5xl', '3.5xl', '4.5xl']
-        }
-      ],
-      'gradient-from-pos': [
-        {
-          from: ['150%']
-        }
-      ],
-      'gradient-via-pos': [
-        {
-          via: ['150%']
-        }
-      ],
-      'gradient-to-pos': [
-        {
-          to: ['150%']
         }
       ],
       'list-style-type': [
@@ -72,12 +52,15 @@ const config: any = {
         {
           'text-shadow': ['', 'none', (x: string) => Number(x) > 0]
         }
+      ],
+      'bg-image': [
+        {
+          bg: ['-loading', '-waiting']
+        }
       ]
-    },
-    conflictingClassGroups: {
-      // container: ['containers'],
-      // containers: ['container']
     }
+    // conflictingClassGroups: {},
+    // orderSensitiveModifiers: []
   }
 };
 
@@ -96,13 +79,17 @@ if (expand) {
   ].forEach((i) => {
     if (expand.extend[i]) {
       if (config.extend[i]) {
-        Object.keys(expand.extend[i]).forEach((key) => {
-          if (config.extend[i][key]) {
-            config.extend[i][key] = config.extend[i][key].concat(expand.extend[i][key]);
-          } else {
-            config.extend[i][key] = expand.extend[i][key];
-          }
-        });
+        if (i === 'orderSensitiveModifiers') {
+          config.extend[i] = config.extend[i].concat(expand.extend[i]);
+        } else {
+          Object.keys(expand.extend[i]).forEach((key) => {
+            if (config.extend[i][key]) {
+              config.extend[i][key] = config.extend[i][key].concat(expand.extend[i][key]);
+            } else {
+              config.extend[i][key] = expand.extend[i][key];
+            }
+          });
+        }
       } else {
         config.extend[i] = expand.extend[i];
       }
@@ -110,8 +97,8 @@ if (expand) {
   });
 }
 
-const twMerge = extendTailwindMerge<any>(config);
-
-export { twJoin, twMerge };
-
 export default config;
+
+export const twMerge = extendTailwindMerge<any>(config);
+
+export { twJoin } from 'tailwind-merge';

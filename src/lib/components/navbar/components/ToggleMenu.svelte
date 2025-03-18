@@ -2,25 +2,39 @@
   import { twMerge } from '../../../tailwind/tailwind-merge.js';
   import Icon from '../../../app/iconify/Icon.svelte';
 
-  let className: ClassName = undefined;
-  export { className as class };
-
-  export let label = 'toggle menu';
-
-  export let hidden: boolean;
-  export let toggle: () => void;
-  export let size: number | string = '1.75em';
+  import type { HTMLButtonAttributes } from 'svelte/elements';
+  type Props = Omit<HTMLButtonAttributes, 'class' | 'hidden'> & {
+    hidden: boolean;
+    toggle: () => void;
+    class?: ClassName;
+    label?: string;
+    icon?: string;
+    size?: number | string;
+  };
+  const {
+    hidden,
+    toggle,
+    class: className,
+    label,
+    icon = 'ic:round-menu',
+    size = '1.75em',
+    'aria-label': ariaLabel = label ?? 'toggle menu',
+    'aria-expanded': _0,
+    'aria-controls': _1,
+    ...rest
+  }: Props = $props();
 </script>
 
 <button
-  on:click={toggle}
-  class={twMerge(className)}
-  aria-label="toggle menu"
+  onclick={toggle}
+  class={twMerge('hover:cursor-pointer', className)}
+  aria-label={ariaLabel}
   aria-expanded={!hidden}
-  aria-controls="navbar-menu">
-  <span class="sr-only">{@html label}</span>
+  aria-controls="navbar-menu"
+  {...rest}>
+  <span class="sr-only">{@html ariaLabel}</span>
   <Icon
     class="pointer-events-none"
-    icon="ic:round-menu"
+    {icon}
     {size} />
 </button>

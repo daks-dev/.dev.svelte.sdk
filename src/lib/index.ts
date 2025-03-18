@@ -54,6 +54,10 @@ export { default as NavbarWrapper } from './components/navbar/NavbarWrapper.svel
 
 export { default as SvelteKitCounter } from './components/svelte-kit-counter/SvelteKitCounter.svelte';
 
+// tailwind
+
+export { default as twExtendConfig, twMerge, twJoin } from './tailwind/tailwind-merge.js';
+
 // ui
 export { default as ColorTheme } from './ui/color-theme/ColorTheme.svelte';
 

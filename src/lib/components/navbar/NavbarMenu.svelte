@@ -4,13 +4,24 @@
   import Link from './components/Link.svelte';
   import type { NavItem } from '../../ui/navigate/index.d.ts';
 
-  let className: ClassName = undefined;
-  export { className as class };
-  export let classLink: ClassName = undefined;
-
-  export let links: Partial<NavItem>[];
-  export let hidden: boolean;
-  export let duration = 300;
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  type Props = Omit<SvelteHTMLElements['nav'], 'class' | 'hidden'> & {
+    links: NavItem[];
+    hidden: boolean;
+    class?: ClassName;
+    classLink?: ClassName;
+    duration?: number;
+  };
+  const {
+    children,
+    links,
+    hidden,
+    class: className,
+    classLink,
+    duration = 300,
+    'aria-hidden': _0,
+    ...rest
+  }: Props = $props();
 </script>
 
 <nav
@@ -29,7 +40,8 @@
     className
   )}
   style:transition-duration={`${duration}ms`}
-  aria-hidden={hidden ? true : undefined}>
+  aria-hidden={hidden ? true : undefined}
+  {...rest}>
   {#each links as link}
     {#if link.links}
       <Dropdown
@@ -45,5 +57,7 @@
         {hidden} />
     {/if}
   {/each}
-  <slot />
+  {#if children}
+    {@render children()}
+  {/if}
 </nav>

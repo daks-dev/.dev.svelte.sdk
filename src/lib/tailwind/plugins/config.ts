@@ -1,6 +1,4 @@
 import plugin from 'tailwindcss/plugin.js';
-import defaultTheme from 'tailwindcss/defaultTheme.js';
-//import colors from 'tailwindcss/colors';
 
 import 'dotenv/config';
 const breakpoint = Number(process.env.PUBLIC_BREAKPOINT);
@@ -21,7 +19,10 @@ export default plugin(() => {}, {
   theme: {
     extend: {
       screens: {
-        bp: isNaN(breakpoint) ? defaultTheme.screens.md : `${breakpoint}px`
+        bp:
+          breakpoint && !isNaN(breakpoint)
+            ? `${Math.round((breakpoint / 16) * 10) / 10}rem`
+            : '50rem'
       },
       spacing: {
         inherit: 'inherit',
@@ -38,9 +39,6 @@ export default plugin(() => {}, {
       listStyleType: {
         circle: 'circle',
         square: 'square'
-      },
-      gradientColorStopPositions: {
-        '150%': '150%'
       }
     }
   }
