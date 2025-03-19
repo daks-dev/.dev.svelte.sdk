@@ -1,24 +1,22 @@
 import { resolve } from 'node:path';
-import { __dirname, access, copyFile, makeDir, rootpath, writeFile } from '../../../server/fs.js';
+import * as fs from '../../../server/fs.js';
 
 export default async function () {
-  const data: any = import.meta.glob('/.svelte-kit/*.json', {
-    eager: true,
-    import: 'default'
-  })['.svelte-kit/tsconfig.json'];
-  const assets = data?.compilerOptions.paths['$iconify']?.at(0).slice(3);
+  const assets = await fs.readFile(fs.rootpath('.svelte-kit', 'tsconfig.json')).then((val) => {
+    if (val) val = JSON.parse(val).compilerOptions.paths['$iconify']?.at(0).slice(3);
+    if (val) return val;
+    else throw new DOMException('Alias $iconify missing', 'Svelte Config');
+  });
 
-  if (assets) {
-    await makeDir(rootpath(assets, 'local'));
-    let file = rootpath(assets, 'index.ts');
-    await access(
-      file,
-      async () => await copyFile(resolve(__dirname(import.meta.url), 'assets.iconify'), file)
-    );
-    file = rootpath(assets, 'iconset.json');
-    await access(file, async () => await writeFile(file, '{}', 'w+'));
-    file = rootpath(assets, 'bundles.json');
-    await access(file, async () => await writeFile(file, '[]', 'w+'));
-    console.debug('SSR iconify');
-  } else new DOMException('Alias $iconify missing', 'Svelte Config');
+  await fs.makeDir(fs.rootpath(assets, 'local'));
+  let file = fs.rootpath(assets, 'index.ts');
+  await fs.access(
+    file,
+    async () => await fs.copyFile(resolve(fs.__dirname(import.meta.url), 'assets.iconify'), file)
+  );
+  file = fs.rootpath(assets, 'iconset.json');
+  await fs.access(file, async () => await fs.writeFile(file, '{}', 'w+'));
+  file = fs.rootpath(assets, 'bundles.json');
+  await fs.access(file, async () => await fs.writeFile(file, '[]', 'w+'));
+  console.debug('SSR iconify');
 }

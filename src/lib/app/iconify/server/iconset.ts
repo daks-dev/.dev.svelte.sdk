@@ -1,5 +1,5 @@
 import { addAPIProvider, loadIcon } from 'iconify-icon';
-import { error, rootpath, writeFile } from '../../../server/fs.js';
+import { error, rootpath, readFile, writeFile } from '../../../server/fs.js';
 import type { IconifyBundle } from '../index.d.ts';
 
 export default async function (resources = ['http://localhost:3000']) {
@@ -7,19 +7,17 @@ export default async function (resources = ['http://localhost:3000']) {
     resources
   });
 
-  const assets = await import(/* @vite-ignore */ rootpath('.svelte-kit/tsconfig.json')).then(
-    (val) => {
-      val = val.default.compilerOptions.paths['$iconify']?.at(0).slice(3);
-      if (val) return val;
-      throw new DOMException('Alias $iconify missing', 'Svelte Config');
-    }
-  );
+  const assets = await readFile(rootpath('.svelte-kit', 'tsconfig.json')).then((val) => {
+    if (val) val = JSON.parse(val).compilerOptions.paths['$iconify']?.at(0).slice(3);
+    if (val) return val;
+    else throw new DOMException('Alias $iconify missing', 'Svelte Config');
+  });
 
   const bundles: IconifyBundle[] = [];
   const counts: Record<string, number> = {};
 
-  const iconset = await import(/* @vite-ignore */ rootpath(assets, 'iconset.json'))
-    .then((val) => val.default)
+  const iconset = await readFile(rootpath(assets, 'iconset.json'))
+    .then((val) => (val ? JSON.parse(val) : {}))
     .catch(error);
 
   async function load(prefix: string) {
