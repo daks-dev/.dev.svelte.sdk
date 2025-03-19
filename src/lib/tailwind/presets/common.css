@@ -63,6 +63,6 @@
     @apply invisible;
   }
   &:where(.lazy-loaded) {
-    @apply bg-none;
+    @apply bg-transparent bg-none;
   }
 }

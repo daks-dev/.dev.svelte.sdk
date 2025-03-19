@@ -16,7 +16,7 @@
   :where(a) {
     text-decoration-line: underline;
     text-decoration-color: transparent;
-    text-underline-offset: 4px;
+    text-underline-offset: 5px;
     transition-property:
       color, background-color, border-color, outline-color, text-decoration-color;
     transition-duration: var(--tw-duration, 300ms);
