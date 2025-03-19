@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { twMerge } from '@daks.dev/svelte.sdk/tailwind-merge';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
 
   import type {
     HTMLVideoAttributes,

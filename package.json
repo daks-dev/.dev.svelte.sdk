@@ -18,7 +18,7 @@
     "@iconify/svelte": "^4.2.0",
     "@nanostores/persistent": "^0.10.2",
     "@rollup/pluginutils": "^5.1.4",
-    "@sveltejs/kit": "^2.20.0",
+    "@sveltejs/kit": "^2.20.1",
     "@sveltejs/package": "^2.3.10",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@tailwindcss/vite": "^4.0.14",
@@ -35,7 +35,7 @@
     "mini-svg-data-uri": "^1.4.4",
     "nanostores": "^0.11.4",
     "publint": "^0.3.9",
-    "svelte": "^5.23.1",
+    "svelte": "^5.23.2",
     "svelte-check": "^4.1.5",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.14",
@@ -47,8 +47,8 @@
     "vitest": "^3.0.9"
   },
   "peerDependencies": {
-    "@sveltejs/kit": "^2.20.0",
-    "svelte": "^5.23.1",
+    "@sveltejs/kit": "^2.20.1",
+    "svelte": "^5.23.2",
     "tailwindcss": "^4.0.14"
   },
   "exports": {
