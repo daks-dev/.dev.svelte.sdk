@@ -8,7 +8,8 @@
   export let options: Partial<Options>;
   export let status: Status = undefined;
 
-  const delay = 200;
+  options.duration ??= 200;
+  const delay = Math.round(options.duration / 4);
 </script>
 
 <div
@@ -17,10 +18,9 @@
   class={twMerge(
     'lightbox-body',
     'relative z-10 flex overflow-hidden',
-    scrollable && 'overflow-y-auto',
+    fullscreen && 'fullscreen',
+    scrollable && 'scrollable overflow-y-auto',
     options.swipe && status && status.countItems > 1 ? 'cursor-ew-resize' : 'cursor-default'
-  )}
-  class:fullscreen
-  class:scrollable>
+  )}>
   <slot />
 </div>
