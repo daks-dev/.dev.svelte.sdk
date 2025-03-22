@@ -5,25 +5,27 @@
   import Header from './components/Header.svelte';
   import Footer from './components/Footer.svelte';
   import Body from './components/Body.svelte';
-  import type { LightboxAttributes } from './index.d.ts';
 
   import './index.css';
 
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  import type { LightboxAttributes } from './index.d.ts';
+  type Props = Omit<SvelteHTMLElements['div'], 'class' | 'title'> & LightboxAttributes;
   const {
     children,
     class: className,
     custom = {},
     options: __options = {},
-    tag = 'div',
-    title = '',
-    subtitle = '',
-    description = '',
+    title,
+    subtitle,
+    description,
     alt = '',
     fullscreen: __fullscreen = false,
     scrollable = false,
     loader,
-    thumbnail
-  }: LightboxAttributes = $props();
+    thumbnail,
+    ...rest
+  }: Props = $props();
 
   const options = Object.assign(
     {
@@ -73,25 +75,25 @@
 </script>
 
 {#if thumbnail}
-  <svelte:element
-    this={tag}
+  <div
     onclick={open}
     class={twMerge('hover:cursor-zoom-in', className)}
     role="button"
-    tabindex="-1">
-    {@render thumbnail(custom, alt)}
-  </svelte:element>
+    tabindex="-1"
+    {...rest}>
+    {@render thumbnail()}
+  </div>
 {/if}
 
 {#if visible}
   <Overlay
-    on:close={close}
+    {close}
     {custom}
     {fullscreen}
     {options}>
     <Header
-      on:close={close}
-      on:fullscreen={toogleFullscreen}
+      {close}
+      {toogleFullscreen}
       {custom}
       {fullscreen}
       {options} />

@@ -1,29 +1,30 @@
 <script lang="ts">
   import { twMerge } from '../../../tailwind/tailwind-merge.js';
-  import { createEventDispatcher } from 'svelte';
   import type { Custom, Options } from '../index.d.ts';
 
-  const dispatch = createEventDispatcher();
-
-  export let custom: Partial<Custom>;
-  export let options: Partial<Options>;
-
-  export let fullscreen: boolean;
+  type Props = {
+    close: () => void;
+    toogleFullscreen: () => void;
+    custom: Custom;
+    options: Options;
+    fullscreen: boolean;
+  };
+  const { close, toogleFullscreen, custom, options, fullscreen }: Props = $props();
 </script>
 
 <div
-  class:fullscreen
   class={twMerge(
     'lightbox-header',
     'relative z-30 h-12',
     'flex items-center justify-end gap-2',
     'text-4xl text-gray-200/50',
     'cursor-default',
+    fullscreen && 'fullscreen',
     custom.header
   )}>
   {#if options.buttonFullscreen}
     <button
-      on:click={() => dispatch('fullscreen')}
+      onclick={toogleFullscreen}
       class={twMerge(
         'py-1.5',
         'transition-all duration-200',
@@ -49,7 +50,7 @@
   {/if}
   {#if options.buttonClose}
     <button
-      on:click={() => dispatch('close')}
+      onclick={close}
       class={twMerge(
         'py-1.5',
         'transition-all duration-200 ease-in',

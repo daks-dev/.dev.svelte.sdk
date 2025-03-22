@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount, setContext } from 'svelte';
-  import { writable, type Writable } from 'svelte/store';
+  import { writable } from 'svelte/store';
   import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Overlay from './components/Overlay.svelte';
   import Header from './components/Header.svelte';
   import Footer from './components/Footer.svelte';
   import Body from './components/Body.svelte';
   import Controller from './components/Controller.svelte';
+  import type { Writable } from 'svelte/store';
   import type { Options, Custom, Item } from './index.d.ts';
 
   import './index.css';
@@ -53,7 +54,6 @@
   //
   $: fullscreen;
 
-  let controller: Controller;
   let visible = false;
   let items: Item[] = [];
   let countThumbnails = 0;
@@ -132,20 +132,17 @@
 
 {#if visible}
   <Overlay
-    on:close={close}
-    on:previous={controller.previous}
-    on:next={controller.next}
+    {close}
     {custom}
     {fullscreen}
     {options}>
     <Header
-      on:close={close}
-      on:fullscreen={toogleFullscreen}
+      {close}
+      {toogleFullscreen}
       {custom}
       {fullscreen}
       {options} />
     <Controller
-      bind:this={controller}
       {options}
       {countItemsStore}
       {activeItemStore}>

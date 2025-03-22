@@ -1,50 +1,46 @@
 <script lang="ts">
   import { twMerge } from '../../../tailwind/tailwind-merge.js';
-  import { createEventDispatcher, onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { swipe, wheel } from '../../../utils/index.js';
+  import type { Snippet } from 'svelte';
   import type { Custom, Options } from '../index.d.ts';
 
-  const dispatch = createEventDispatcher();
+  type Props = {
+    children: Snippet;
+    close: () => void;
+    custom: Custom;
+    options: Options;
+    fullscreen: boolean;
+  };
+  const { children, close, custom, options, fullscreen }: Props = $props();
 
-  export let custom: Partial<Custom>;
-  export let fullscreen: boolean;
-  export let options: Partial<Options>;
-
-  function handleKey(event: KeyboardEvent): void {
+  function handleKey(e: KeyboardEvent): void {
     if (options.enableKeyboard)
-      switch (event.key) {
-        case 'Escape': {
-          dispatch('close');
-          break;
-        }
+      switch (e.key) {
+        case 'Escape':
+          e.preventDefault();
+          e.stopPropagation();
+          close();
       }
   }
 
-  const actionSwipe = options.swipe
-    ? function (delta: { x: number; h: boolean; v: boolean }): void {
-        if (options.swipe && delta.h && !delta.v) dispatch(delta.x > 0 ? 'previous' : 'next');
-      }
-    : undefined;
-
-  const actionWheel = options.wheel
-    ? function (delta: { y: number }): void {
-        if (options.wheel) {
-          delta.y > 0 && dispatch('next');
-          delta.y < 0 && dispatch('previous');
-        }
-      }
-    : undefined;
-
   const handleClick = options.clickableClose
-    ? function (): void {
-        dispatch('close');
+    ? function (e: Event): void {
+        e.preventDefault();
+        e.stopPropagation();
+        close();
       }
     : undefined;
+
+  const breakClick = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  };
 
   let node: HTMLElement;
   let anchor: HTMLElement;
-  let touch: boolean;
+  let touch = $state(false);
   onMount(() => {
     anchor = document.createElement('div');
     document.body.appendChild(anchor);
@@ -57,16 +53,14 @@
   onDestroy(() => typeof document !== 'undefined' && document.body.removeChild(anchor));
 </script>
 
-<svelte:window on:keydown={handleKey} />
+<svelte:window onkeydown={handleKey} />
 
 <div
   bind:this={node}
   in:fade={{ duration: options.duration }}
   out:fade={{ duration: options.duration && options.duration / 2 }}
-  use:swipe={actionSwipe}
-  use:wheel={actionWheel}
-  on:click={handleClick}
-  on:keypress
+  onclick={handleClick}
+  onkeydown={null}
   class={twMerge(
     'fixed top-0 left-0 z-[999] h-screen max-h-screen w-full max-w-full overflow-hidden',
     'flex items-center justify-center',
@@ -81,12 +75,12 @@
   role="button"
   tabindex="-1">
   <div
-    on:click|preventDefault|stopPropagation={() => false}
-    on:keypress
+    onclick={breakClick}
+    onkeydown={null}
     class={twMerge('max-h-inherit flex flex-col', fullscreen && 'h-inherit w-inherit')}
     role="button"
     tabindex="-1">
-    <slot />
+    {@render children?.()}
   </div>
   <div
     class="

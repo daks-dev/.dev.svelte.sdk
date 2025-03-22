@@ -9,7 +9,7 @@
 
   type Props = LightboxAttributes & {
     sources: ImageMetainfo[];
-    thumbnails: ImageMetainfo[];
+    modifieds: ImageMetainfo[];
     sign?: string | SignAttributes;
     grid?: boolean;
     adaptive?: boolean;
@@ -23,7 +23,7 @@
   };
   const {
     sources,
-    thumbnails,
+    modifieds,
     sign: __sign,
     class: className,
     custom = {},
@@ -66,8 +66,8 @@
   {loader}
   {...rest}>
   <svelte:fragment slot="thumbnail">
-    {#each thumbnails as data, idx}
-      <LightboxThumbnail class={sign && 'group relative'}>
+    {#each modifieds as data, idx}
+      <LightboxThumbnail class={['outline-none', sign && 'group relative']}>
         {#if sign}
           <Sign
             class={[scale && 'group-hover:translate-y-1', custom.inner?.sign]}
@@ -101,7 +101,7 @@
           href={sources[idx].src} />
         <link
           rel="thumbnailUrl"
-          href={thumbnails[idx].src} />
+          href={modifieds[idx].src} />
       </LightboxThumbnail>
     {/each}
   </svelte:fragment>

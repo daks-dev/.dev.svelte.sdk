@@ -21,8 +21,6 @@ export type Custom = {
 };
 
 export interface LightboxAttributes {
-  children?: Snippet;
-  tag?: 'div' | 'section';
   class?: ClassName;
   custom?: Custom;
   title?: string;
@@ -33,7 +31,7 @@ export interface LightboxAttributes {
   fullscreen?: boolean;
   scrollable?: boolean;
   loader?: () => void;
-  thumbnail?: Snippet<[Custom, string]>;
+  thumbnail?: Snippet;
 }
 
 export interface Item {

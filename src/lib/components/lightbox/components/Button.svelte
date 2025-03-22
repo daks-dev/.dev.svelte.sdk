@@ -3,32 +3,28 @@
   import type { Options } from '../index.d.ts';
 
   type Props = {
+    next?: () => void;
+    previous?: () => void;
     class?: ClassName;
-    options: Partial<Options>;
-    next?: boolean;
+    options: Options;
     countItems: number;
     activeItem: number;
   };
-  const { class: className, options, next = false, countItems, activeItem }: Props = $props();
+  const { next, previous, class: className, options, countItems, activeItem }: Props = $props();
 
-  /*
-  export let options: Partial<Options>;
-
-  export let next: boolean = false;
-
-  export let countItems: number;
-  export let activeItem: number;
-  */
+  const handleClick = (e: Event) => {
+    e.preventDefault();
+    e.stopPropagation();
+    (next || previous)?.();
+  };
 
   let disabled = $derived.by(
     () => options.behaviour !== 'loop' && (next ? activeItem === countItems - 1 : activeItem === 0)
   );
 </script>
 
-<!-- TODO: -->
-<!-- svelte-ignore event_directive_deprecated -->
 <button
-  on:click|preventDefault|stopPropagation
+  onclick={handleClick}
   class={twMerge(
     'hidden',
     'absolute inset-y-0 z-20',

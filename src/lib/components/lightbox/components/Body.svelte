@@ -3,12 +3,25 @@
   import { blur } from 'svelte/transition';
   import type { Options, Status } from '../index.d.ts';
 
-  export let fullscreen: boolean;
-  export let scrollable: boolean;
-  export let options: Partial<Options>;
-  export let status: Status = undefined;
-
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  type Props = Omit<SvelteHTMLElements['div'], 'class'> & {
+    class?: ClassName;
+    fullscreen: boolean;
+    scrollable: boolean;
+    options: Options;
+    status?: Status;
+  };
+  const {
+    children,
+    class: className,
+    fullscreen,
+    scrollable,
+    options,
+    status,
+    ...rest
+  }: Props = $props();
   options.duration ??= 200;
+
   const delay = Math.round(options.duration / 4);
 </script>
 
@@ -21,6 +34,7 @@
     fullscreen && 'fullscreen',
     scrollable && 'scrollable overflow-y-auto',
     options.swipe && status && status.countItems > 1 ? 'cursor-ew-resize' : 'cursor-default'
-  )}>
-  <slot />
+  )}
+  {...rest}>
+  {@render children?.()}
 </div>
