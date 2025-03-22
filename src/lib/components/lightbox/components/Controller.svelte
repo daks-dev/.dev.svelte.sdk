@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Writable } from 'svelte/store';
   import { swipe, wheel } from '../../../utils/index.js';
   import Button from './Button.svelte';
   import type { Snippet } from 'svelte';
@@ -7,29 +6,29 @@
 
   type Props = {
     children: Snippet;
+    activeItem: number;
+    countItems: number;
     options: Options;
-    countItemsStore: Writable<number>;
-    activeItemStore: Writable<number>;
   };
-  const { children, options, countItemsStore, activeItemStore }: Props = $props();
+  let { children, activeItem = $bindable(), countItems = $bindable(), options }: Props = $props();
 
   export function previous(): void {
-    if ($activeItemStore === 0) {
+    if (activeItem === 0) {
       if (options.behaviour === 'loop') {
-        activeItemStore.set($countItemsStore - 1);
+        activeItem = countItems - 1;
       }
     } else {
-      activeItemStore.set($activeItemStore - 1);
+      activeItem--;
     }
   }
 
   export function next(): void {
-    if ($activeItemStore === $countItemsStore - 1) {
+    if (activeItem === countItems - 1) {
       if (options.behaviour === 'loop') {
-        activeItemStore.set(0);
+        activeItem = 0;
       }
     } else {
-      activeItemStore.set($activeItemStore + 1);
+      activeItem++;
     }
   }
 
@@ -70,20 +69,20 @@
   use:wheel={actionWheel}
   onkeydown={handleKey} />
 
-{#if $countItemsStore > 1}
+{#if countItems > 1}
   <Button
     {previous}
     {options}
-    activeItem={$activeItemStore}
-    countItems={$countItemsStore} />
+    {activeItem}
+    {countItems} />
 {/if}
 
 {@render children?.()}
 
-{#if $countItemsStore > 1}
+{#if countItems > 1}
   <Button
     {next}
     {options}
-    activeItem={$activeItemStore}
-    countItems={$countItemsStore} />
+    {activeItem}
+    {countItems} />
 {/if}

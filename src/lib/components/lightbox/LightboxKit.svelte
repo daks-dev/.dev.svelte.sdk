@@ -11,6 +11,7 @@
     sources: ImageMetainfo[];
     modifieds: ImageMetainfo[];
     sign?: string | SignAttributes;
+    alt?: string;
     grid?: boolean;
     adaptive?: boolean;
     centered?: boolean;
@@ -65,7 +66,7 @@
   {options}
   {loader}
   {...rest}>
-  <svelte:fragment slot="thumbnail">
+  {#snippet thumbnail()}
     {#each modifieds as data, idx}
       <LightboxThumbnail class={['outline-none', sign && 'group relative']}>
         {#if sign}
@@ -104,7 +105,7 @@
           href={modifieds[idx].src} />
       </LightboxThumbnail>
     {/each}
-  </svelte:fragment>
+  {/snippet}
   {#each sources as { src, width, height, title, subtitle, description }}
     <LightboxModal
       title={title ?? __title}

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { getContext } from 'svelte';
   import type { Snippet } from 'svelte';
-  import type { Writable } from 'svelte/store';
 
   type Props = {
     children?: Snippet;
@@ -11,7 +10,7 @@
   };
   const { children, title, subtitle, description }: Props = $props();
 
-  const activeItemStore: Writable<number> = getContext('activeItem');
+  let activeItem = $derived(getContext<() => number>('activeItem')());
 
   const idx = getContext<(x: Record<string, string | undefined>) => number>('counterItems')({
     title,
@@ -20,6 +19,6 @@
   });
 </script>
 
-{#if $activeItemStore === idx}
+{#if activeItem === idx}
   {@render children?.()}
 {/if}

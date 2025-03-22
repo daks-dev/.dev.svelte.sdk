@@ -19,7 +19,6 @@
     title,
     subtitle,
     description,
-    alt = '',
     fullscreen: __fullscreen = false,
     scrollable = false,
     loader,

@@ -26,7 +26,6 @@ export interface LightboxAttributes {
   title?: string;
   subtitle?: string;
   description?: string;
-  alt?: string;
   options?: Options;
   fullscreen?: boolean;
   scrollable?: boolean;
