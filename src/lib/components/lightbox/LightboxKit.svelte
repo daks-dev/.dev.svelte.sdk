@@ -21,10 +21,10 @@
     invert?: boolean;
     native?: boolean;
   };
-  let {
+  const {
     sources,
     thumbnails,
-    sign,
+    sign: __sign,
     class: className,
     custom = {},
     options = {},
@@ -44,12 +44,15 @@
     loader = native ? undefined : () => document?.lazyload.update(),
     ...rest
   }: Props = $props();
+  const sign = __sign
+    ? typeof __sign === 'string'
+      ? {
+          icon: __sign,
+          dark: true
+        }
+      : __sign
+    : undefined;
   options.behaviour ??= 'loop';
-  if (typeof sign === 'string')
-    sign = {
-      icon: sign,
-      dark: true
-    };
 </script>
 
 <LightboxList

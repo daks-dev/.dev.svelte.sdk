@@ -1,4 +1,4 @@
-// export type Behaviour = 'loop' | 'hide';
+import type { Snippet } from 'svelte';
 
 export interface Options {
   behaviour?: 'loop' | 'hide';
@@ -20,9 +20,8 @@ export type Custom = {
   inner?: Record<string, ClassName>;
 };
 
-// export type Loader = (() => void) | undefined;
-
 export interface LightboxAttributes {
+  children?: Snippet;
   tag?: 'div' | 'section';
   class?: ClassName;
   custom?: Custom;
@@ -34,6 +33,7 @@ export interface LightboxAttributes {
   fullscreen?: boolean;
   scrollable?: boolean;
   loader?: () => void;
+  thumbnail?: Snippet<[Custom, string]>;
 }
 
 export interface Item {

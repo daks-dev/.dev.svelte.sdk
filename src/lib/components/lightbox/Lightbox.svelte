@@ -5,27 +5,27 @@
   import Header from './components/Header.svelte';
   import Footer from './components/Footer.svelte';
   import Body from './components/Body.svelte';
-  import type { Options, Custom } from './index.d.ts';
+  import type { LightboxAttributes } from './index.d.ts';
 
   import './index.css';
 
-  let className: ClassName = undefined;
-  export { className as class };
+  const {
+    children,
+    class: className,
+    custom = {},
+    options: __options = {},
+    tag = 'div',
+    title = '',
+    subtitle = '',
+    description = '',
+    alt = '',
+    fullscreen: __fullscreen = false,
+    scrollable = false,
+    loader,
+    thumbnail
+  }: LightboxAttributes = $props();
 
-  export let custom: Partial<Custom> = {};
-
-  export let tag = 'div';
-
-  export let title = '';
-  export let subtitle = '';
-  export let description = '';
-  export let alt = '';
-
-  export let fullscreen = false;
-  export let scrollable = false;
-
-  export let options: Options = {};
-  options = Object.assign(
+  const options = Object.assign(
     {
       clickableClose: true,
       buttonClose: true,
@@ -34,21 +34,16 @@
       bodyScroll: false,
       duration: 200
     },
-    options,
+    __options,
     {
       swipe: false,
       wheel: false
     }
   );
+  if (scrollable) options.buttonFullscreen = false;
 
-  export let loader: undefined | (() => void) = undefined;
-
-  if (scrollable) fullscreen = options.buttonFullscreen = false;
-
-  //
-  $: fullscreen;
-
-  let visible = false;
+  let fullscreen = $state(scrollable ? false : __fullscreen);
+  let visible = $state(false);
 
   let toggleScroll: () => void;
 
@@ -67,10 +62,7 @@
   }
 
   onMount(() => {
-    //loader && loader();
-    loader?.call(null);
-    //window.getComputedStyle(document.body).overflowY
-    //window.innerWidth - document.documentElement.clientWidth
+    loader?.();
     if (!options.bodyScroll || scrollable) {
       toggleScroll = () => {
         if (visible) document.body.classList.add('overflow-y-hidden');
@@ -80,18 +72,14 @@
   });
 </script>
 
-{#if $$slots.thumbnail}
+{#if thumbnail}
   <svelte:element
     this={tag}
-    on:keypress
-    on:click={open}
+    onclick={open}
     class={twMerge('hover:cursor-zoom-in', className)}
     role="button"
     tabindex="-1">
-    <slot
-      name="thumbnail"
-      {custom}
-      {alt} />
+    {@render thumbnail(custom, alt)}
   </svelte:element>
 {/if}
 
@@ -111,7 +99,7 @@
       {fullscreen}
       {scrollable}
       {options}>
-      <slot />
+      {@render children?.()}
     </Body>
     <Footer
       {custom}
