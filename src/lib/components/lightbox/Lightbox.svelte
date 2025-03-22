@@ -5,7 +5,7 @@
   import Header from './components/Header.svelte';
   import Footer from './components/Footer.svelte';
   import Body from './components/Body.svelte';
-  import type { Options, Custom, Loader } from './index.d.ts';
+  import type { Options, Custom } from './index.d.ts';
 
   import './index.css';
 
@@ -19,11 +19,12 @@
   export let title = '';
   export let subtitle = '';
   export let description = '';
+  export let alt = '';
 
   export let fullscreen = false;
   export let scrollable = false;
 
-  export let options: Partial<Options> = {};
+  export let options: Options = {};
   options = Object.assign(
     {
       clickableClose: true,
@@ -40,7 +41,7 @@
     }
   );
 
-  export let loader: Loader = undefined;
+  export let loader: undefined | (() => void) = undefined;
 
   if (scrollable) fullscreen = options.buttonFullscreen = false;
 
@@ -89,7 +90,8 @@
     tabindex="-1">
     <slot
       name="thumbnail"
-      {custom} />
+      {custom}
+      {alt} />
   </svelte:element>
 {/if}
 

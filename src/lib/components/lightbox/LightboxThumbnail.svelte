@@ -6,9 +6,11 @@
   let className: ClassName = undefined;
   export { className as class };
 
-  export let custom: Partial<Custom> = {};
-
   export let tag = 'div';
+
+  export let custom: Custom = {};
+
+  export let alt = '';
 
   export let id = getContext<() => number>('counterThumbnails')();
 
@@ -22,5 +24,7 @@
   tabindex="-1"
   class={twMerge('lightbox-thumbnail cursor-zoom-in', className)}
   {...$$restProps}>
-  <slot {custom} />
+  <slot
+    {custom}
+    {alt} />
 </svelte:element>

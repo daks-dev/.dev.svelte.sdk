@@ -4,42 +4,52 @@
   import LightboxList from './LightboxList.svelte';
   import LightboxModal from './LightboxModal.svelte';
   import LightboxThumbnail from './LightboxThumbnail.svelte';
-  import type { SignOptions } from '../../ui/sign/index.d.ts';
-  import type { Options, Custom, Loader } from './index.d.ts';
+  import type { SignAttributes } from '../../ui/sign/index.d.ts';
+  import type { LightboxAttributes } from './index.d.ts';
 
-  export let sources: ImageMetainfo[];
-  export let thumbnails: ImageMetainfo[];
-
-  let className: ClassName = undefined;
-  export { className as class };
-
-  export let alt: string = '';
-
-  export let native = false;
-
-  export let grid = false;
-  export let adaptive = false;
-  export let centered = false;
-  export let rounded = false;
-  export let shadow = false;
-  export let scale = false;
-  export let grayscale = false;
-  export let invert = false;
-
-  export let custom: Partial<Custom> = {};
-
-  export let options: Partial<Options> = {};
-  options = Object.assign({ behaviour: 'loop' }, options);
-
-  export let loader: Loader = () => document?.lazyload.update();
-
-  export let sign: true | Partial<SignOptions> = {};
-  if (sign === true)
+  type Props = LightboxAttributes & {
+    sources: ImageMetainfo[];
+    thumbnails: ImageMetainfo[];
+    sign?: string | SignAttributes;
+    grid?: boolean;
+    adaptive?: boolean;
+    centered?: boolean;
+    rounded?: boolean;
+    shadow?: boolean;
+    scale?: boolean;
+    grayscale?: boolean;
+    invert?: boolean;
+    native?: boolean;
+  };
+  let {
+    sources,
+    thumbnails,
+    sign,
+    class: className,
+    custom = {},
+    options = {},
+    title: __title,
+    subtitle: __subtitle,
+    description: __description,
+    alt = '',
+    grid = false,
+    adaptive = false,
+    centered = false,
+    rounded = false,
+    shadow = false,
+    scale = false,
+    grayscale = false,
+    invert = false,
+    native = false,
+    loader = native ? undefined : () => document?.lazyload.update(),
+    ...rest
+  }: Props = $props();
+  options.behaviour ??= 'loop';
+  if (typeof sign === 'string')
     sign = {
-      icon: 'ic:round-zoom-out-map',
+      icon: sign,
       dark: true
     };
-  const _sign = sign as SignOptions;
 </script>
 
 <LightboxList
@@ -51,12 +61,14 @@
   {custom}
   {options}
   {loader}
-  {...$$restProps}>
+  {...rest}>
   <svelte:fragment slot="thumbnail">
     {#each thumbnails as data, idx}
       <LightboxThumbnail class={sign && 'group relative'}>
-        {#if _sign}
-          <Sign {..._sign} />
+        {#if sign}
+          <Sign
+            class={[scale && 'group-hover:translate-y-1', custom.inner?.sign]}
+            {...sign} />
         {/if}
         <Figure
           {data}
@@ -92,9 +104,9 @@
   </svelte:fragment>
   {#each sources as { src, width, height, title, subtitle, description }}
     <LightboxModal
-      {title}
-      {subtitle}
-      {description}>
+      title={title ?? __title}
+      subtitle={subtitle ?? __subtitle}
+      description={description ?? __description}>
       <img
         class="bg--loading bg-10% bg-center bg-no-repeat"
         {src}

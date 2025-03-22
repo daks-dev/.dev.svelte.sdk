@@ -1,24 +1,40 @@
-export type Behaviour = 'loop' | 'hide';
+// export type Behaviour = 'loop' | 'hide';
 
 export interface Options {
-  behaviour: Behaviour;
-  swipe: boolean;
-  wheel: boolean;
-  clickableClose: boolean;
-  buttonClose: boolean;
-  buttonFullscreen: boolean;
-  enableKeyboard: boolean;
-  bodyScroll: boolean;
-  duration: number;
+  behaviour?: 'loop' | 'hide';
+  swipe?: boolean;
+  wheel?: boolean;
+  clickableClose?: boolean;
+  buttonClose?: boolean;
+  buttonFullscreen?: boolean;
+  enableKeyboard?: boolean;
+  bodyScroll?: boolean;
+  duration?: number;
 }
 
 export type Custom = {
-  overlay: ClassName;
-  header: ClassName;
-  footer: ClassName;
-  item: ClassName;
-  inner: Record<string, ClassName>;
+  overlay?: ClassName;
+  header?: ClassName;
+  footer?: ClassName;
+  item?: ClassName;
+  inner?: Record<string, ClassName>;
 };
+
+// export type Loader = (() => void) | undefined;
+
+export interface LightboxAttributes {
+  tag?: 'div' | 'section';
+  class?: ClassName;
+  custom?: Custom;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  alt?: string;
+  options?: Options;
+  fullscreen?: boolean;
+  scrollable?: boolean;
+  loader?: () => void;
+}
 
 export interface Item {
   id: number;
@@ -33,8 +49,6 @@ export type Status =
       activeItem: number;
     }
   | undefined;
-
-export type Loader = (() => void) | undefined;
 
 export { default as Lightbox } from './Lightbox.svelte';
 export { default as LightboxKit } from './LightboxKit.svelte';

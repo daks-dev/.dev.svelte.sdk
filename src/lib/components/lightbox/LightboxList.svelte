@@ -7,7 +7,7 @@
   import Footer from './components/Footer.svelte';
   import Body from './components/Body.svelte';
   import Controller from './components/Controller.svelte';
-  import type { Options, Custom, Item, Loader } from './index.d.ts';
+  import type { Options, Custom, Item } from './index.d.ts';
 
   import './index.css';
 
@@ -42,7 +42,7 @@
     options
   );
 
-  export let loader: Loader = undefined;
+  export let loader: undefined | (() => void) = undefined;
 
   if (scrollable) fullscreen = options.buttonFullscreen = options.wheel = false;
 

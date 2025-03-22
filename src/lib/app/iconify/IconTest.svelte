@@ -8,16 +8,6 @@
     label?: string | null;
   };
   const { icon, label, ...rest }: Props = $props();
-
-  /*
-  let className: undefined | string = undefined;
-  export { className as class };
-
-  export let label: string | null | undefined = undefined;
-  export let icon: string | undefined = undefined;
-
-  export let size: number | string | undefined = undefined;
-  */
 </script>
 
 {#if icon}
