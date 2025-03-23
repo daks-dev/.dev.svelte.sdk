@@ -68,6 +68,8 @@ export { default as Figure } from './ui/figure/Figure.svelte';
 
 export { default as FormattedDate } from './ui/formatted-date/FormattedDate.svelte';
 
+export { default as ListMode } from './ui/list_mode/ListMode.svelte';
+
 export type { NavBrand, NavItem, NavSite } from './ui/navigate/index.d.ts';
 export { default as Nav } from './ui/navigate/Nav.svelte.js';
 export { default as Link } from './ui/navigate/Link.svelte';

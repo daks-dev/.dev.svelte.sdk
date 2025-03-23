@@ -13,7 +13,6 @@ export const imagetools = (format: string | number = 'webp', quality: number = 8
           ? {
               format,
               quality: quality.toString(),
-              fit: 'cover',
               background: 'transparent',
               ...(url.searchParams.has('url')
                 ? { as: 'url' }
