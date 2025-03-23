@@ -1,6 +1,6 @@
 {
   "name": "@daks.dev/svelte.sdk",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "DAKS.DEV Svelte SDK",
   "scripts": {
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

@@ -1,47 +1,45 @@
 <script lang="ts">
-  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Carousel from './Carousel.svelte';
-  import type { SvelteComponent } from 'svelte';
-  import type { Custom, Loaded } from './index.d.ts';
+  import type { CarouselAttributes } from './index.d.ts';
 
-  let className: ClassName = undefined;
-  export { className as class };
-  export let custom: Partial<Custom> = {};
+  import type { SvelteHTMLElements } from 'svelte/elements';
+  type Props = Omit<SvelteHTMLElements['div'], 'children' | 'class'> &
+    Pick<SvelteHTMLElements['a'], 'href' | 'target'> &
+    Omit<CarouselAttributes, 'check' | 'loaded'> & {
+      grayscale?: boolean;
+      invert?: boolean;
+      check?: boolean;
+    };
+  const {
+    dataset,
+    custom = {},
+    grayscale = false,
+    invert = false,
+    check = false,
+    ...rest
+  }: Props = $props();
 
-  export let alt: string = '';
-
-  export let dataset: ImageMetainfo[];
-
-  export let grayscale = false;
-  export let invert = false;
-
-  custom.item = twMerge(custom.item, (grayscale || invert) && 'group');
-  (custom.inner ??= {}).image = twMerge(
+  custom.item = [custom.item, (grayscale || invert) && 'group'];
+  (custom.inner ??= {}).image = [
     custom.inner?.image,
-    grayscale && 'grayscale group-oversee:grayscale-0',
-    invert && 'invert group-oversee:invert-0'
-  );
+    grayscale && 'grayscale group-hover:grayscale-0',
+    invert && 'invert group-hover:invert-0'
+  ];
 
-  export let native = false;
-
-  export let check = false;
-  let checked = 0;
-  const loaded: Loaded = () => checked++;
+  let checked = $state(0);
+  const loaded = () => checked++;
 </script>
 
 <Carousel
   {dataset}
-  class={className}
   {custom}
-  {alt}
-  {native}
   {loaded}
-  {...$$restProps}>
-  <svelte:fragment slot="check">
-    {#if check}
+  {...rest}>
+  {#if check}
+    {#snippet check()}
       <div class="relative font-semibold text-black/50">
-        <span class="absolute bottom-full left-2 mb-2">{checked} <sup>{dataset.length}</sup></span>
+        <span class="absolute bottom-full left-2 mb-2">{checked} <sup>{dataset?.length}</sup></span>
       </div>
-    {/if}
-  </svelte:fragment>
+    {/snippet}
+  {/if}
 </Carousel>

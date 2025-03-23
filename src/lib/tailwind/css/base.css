@@ -6,7 +6,7 @@
   --scrollbar-track-bg-color: transparent;
   --scrollbar-thumb-bg-color: var(--color-slate-500);
   --progress-height: 4px;
-  --progress-color: var(--colors-slate-300);
+  --progress-color: var(--color-slate-300);
   --progress-bg-color: var(--color-slate-700);
 }
 
