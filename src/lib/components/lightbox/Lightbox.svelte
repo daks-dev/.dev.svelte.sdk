@@ -12,6 +12,7 @@
   import type { LightboxAttributes } from './index.d.ts';
   type Props = Omit<SvelteHTMLElements['div'], 'class' | 'title'> & LightboxAttributes;
   const {
+    tag = 'div',
     children,
     class: className,
     custom = {},
@@ -74,14 +75,15 @@
 </script>
 
 {#if thumbnail}
-  <div
+  <svelte:element
+    this={tag}
     onclick={open}
     class={twMerge('hover:cursor-zoom-in', className)}
     role="button"
     tabindex="-1"
     {...rest}>
     {@render thumbnail()}
-  </div>
+  </svelte:element>
 {/if}
 
 {#if visible}

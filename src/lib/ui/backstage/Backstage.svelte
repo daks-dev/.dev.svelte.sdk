@@ -3,20 +3,12 @@
   import { onMount } from 'svelte';
 
   import type { SvelteHTMLElements } from 'svelte/elements';
-  type Props = Omit<SvelteHTMLElements['div'], 'class'> & {
+  type Props = Omit<SvelteHTMLElements['div'], 'class' | 'hidden'> & {
     class?: ClassName;
-    hidden: boolean;
     duration?: number | string;
     delay?: number | string;
   };
-  const {
-    children,
-    class: className,
-    hidden: _h,
-    duration = 500,
-    delay = 75,
-    ...rest
-  }: Props = $props();
+  const { children, class: className, duration = 500, delay = 75, ...rest }: Props = $props();
 
   let node: HTMLElement;
 

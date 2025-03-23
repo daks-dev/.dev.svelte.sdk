@@ -26,7 +26,7 @@
     after,
     ...rest
   }: Props = $props();
-  const { src, width, height, format: _f, orientation: _o, ...caption } = data as ImageMetainfo;
+  const { src, width, height, format: _0, orientation: _1, ...caption } = data as ImageMetainfo;
   const entries = Object.entries(caption);
   const handleLoad = native && loaded ? (x: Event) => loaded?.call(x) : undefined;
 </script>

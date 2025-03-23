@@ -16,6 +16,7 @@
     Pick<SvelteHTMLElements['a'], 'href' | 'target'> &
     CarouselAttributes;
   const {
+    tag: __tag = 'div',
     children,
     dataset = [],
     class: className,
@@ -47,6 +48,7 @@
   );
 
   const isLink = !!rest.href;
+  const tag = isLink ? 'a' : __tag;
   const controls = isLink ? [] : __controls;
 
   let total = $state(dataset.length);
@@ -160,7 +162,7 @@
 <svelte:window bind:innerWidth />
 
 <svelte:element
-  this={isLink ? 'a' : 'div'}
+  this={tag}
   class={twMerge('vector-non-scaling-stroke linecap-round linejoin-round', className)}
   {...rest}>
   <div class="relative w-full">

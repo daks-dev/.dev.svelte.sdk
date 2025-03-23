@@ -9,7 +9,10 @@
 
   import type { SvelteHTMLElements } from 'svelte/elements';
   import type { NavItem } from '../navigate/index.d.ts';
-  type Props = Omit<SvelteHTMLElements['a'], 'class'> &
+  type Props = Omit<
+    SvelteHTMLElements['a'],
+    'class' | 'aria-expanded' | 'aria-haspopup' | 'aria-controls'
+  > &
     NavItem & {
       classWrapper?: ClassName;
       inline?: boolean;
@@ -30,31 +33,8 @@
     inline = false,
     sign = !isIcon(label),
     size = '1.25em',
-    'aria-expanded': _0,
-    'aria-haspopup': _1,
-    'aria-controls': _2,
     ...rest
   }: Props = $props();
-
-  /*
-  export let classWrapper: ClassName = undefined;
-  let classLink: ClassName =
-    'py-2 px-4 bg-inherit hover:bg-gray-400/25 rounded-sm border border-gray-500/50';
-  export { classLink as class };
-
-  export let label: string | undefined = undefined;
-
-  export let href: string | undefined = undefined;
-  export let base: string | undefined = undefined;
-
-  export let inline = false;
-  export let sign = !isIcon(label);
-  export let size: number | string = '1.25em';
-
-  export let items: NavItem[] = [];
-
-  export let index: number | undefined = undefined;
-*/
 
   const id = uuid();
 

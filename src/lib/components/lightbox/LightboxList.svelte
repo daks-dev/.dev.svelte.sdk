@@ -1,14 +1,12 @@
 <script lang="ts">
   import { onMount, setContext } from 'svelte';
-  import { writable } from 'svelte/store';
   import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Overlay from './components/Overlay.svelte';
   import Header from './components/Header.svelte';
   import Footer from './components/Footer.svelte';
   import Body from './components/Body.svelte';
   import Controller from './components/Controller.svelte';
-  import type { Writable } from 'svelte/store';
-  import type { Options, Custom, Item } from './index.d.ts';
+  import type { Item } from './index.d.ts';
 
   import './index.css';
 
@@ -16,6 +14,7 @@
   import type { LightboxAttributes } from './index.d.ts';
   type Props = Omit<SvelteHTMLElements['div'], 'class' | 'title'> & LightboxAttributes;
   const {
+    tag = 'div',
     children,
     class: className,
     custom = {},
@@ -116,9 +115,12 @@
 </script>
 
 {#if thumbnail}
-  <div class={twMerge(className)}>
+  <svelte:element
+    this={tag}
+    class={twMerge(className)}
+    {...rest}>
     {@render thumbnail()}
-  </div>
+  </svelte:element>
 {/if}
 
 {#if visible}

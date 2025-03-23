@@ -21,6 +21,7 @@ export type Custom = {
 };
 
 export interface LightboxAttributes {
+  tag?: 'div' | 'aside' | 'section';
   class?: ClassName;
   custom?: Custom;
   title?: string;

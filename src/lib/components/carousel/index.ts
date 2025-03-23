@@ -23,6 +23,7 @@ export type Controls = string | string[];
 export type Loaded = ((x?: Event | HTMLElement) => void) | undefined;
 
 export interface CarouselAttributes {
+  tag?: 'a' | 'div' | 'aside' | 'section';
   children?: Snippet<[number, number, number?]>;
   dataset?: ImageMetainfo[];
   class?: ClassName;
