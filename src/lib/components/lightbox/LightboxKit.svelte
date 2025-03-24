@@ -71,7 +71,7 @@
       <LightboxThumbnail class={['outline-none', sign && 'group relative']}>
         {#if sign}
           <Sign
-            class={[scale && 'group-hover:translate-y-1', custom.inner?.sign]}
+            class={[scale && 'group-hover:translate-y-2', custom.inner?.sign]}
             {...sign} />
         {/if}
         <Figure

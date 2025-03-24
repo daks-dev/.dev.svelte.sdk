@@ -36,7 +36,7 @@
     auto && 'bg-black/20 dark:bg-white/20',
     link ? 'text-sky-600 dark:text-sky-400' : 'text-white',
     'opacity-70 group-hover:opacity-100',
-    'group-hover:animate-bounce',
+    'group-hover:translate-y-1 group-hover:animate-bounce',
     className
   ]}
   {...rest} />

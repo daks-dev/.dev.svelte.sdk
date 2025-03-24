@@ -103,6 +103,8 @@ export { default as ToastData } from './ui/toast/ToastData.svelte';
 export { default as Video } from './ui/video/Video.svelte';
 
 // utils
+export { isHover, isTouch, random, uuid } from './utils/index.js';
+
 export * as audio from './utils/audio.js';
 export * as scroll from './utils/scroll.js';
 
