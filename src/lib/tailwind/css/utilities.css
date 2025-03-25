@@ -1,6 +1,3 @@
-/**
- */
-
 @utility container {
   margin-inline: auto;
 }
@@ -52,6 +49,7 @@
 
 @utility bg-* {
   background-size: --value(percentage);
+  background-color: --value(--color- *);
 }
 @utility bg-only {
   display: inline-block;
