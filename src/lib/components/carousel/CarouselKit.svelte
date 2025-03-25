@@ -1,21 +1,22 @@
 <script lang="ts">
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Carousel from './Carousel.svelte';
   import type { CarouselAttributes } from './index.d.ts';
 
   import type { SvelteHTMLElements } from 'svelte/elements';
-  type Props = Omit<SvelteHTMLElements['div'], 'children' | 'class'> &
+  type Props = Omit<SvelteHTMLElements['div'], 'class'> &
     Pick<SvelteHTMLElements['a'], 'href' | 'target'> &
-    Omit<CarouselAttributes, 'check' | 'loaded'> & {
+    Omit<CarouselAttributes, 'loaded'> & {
       grayscale?: boolean;
       invert?: boolean;
-      check?: boolean;
+      checked?: boolean | string;
     };
   const {
     dataset,
     custom = {},
     grayscale = false,
     invert = false,
-    check = false,
+    checked = false,
     ...rest
   }: Props = $props();
 
@@ -26,8 +27,8 @@
     invert && 'invert group-hover:invert-0'
   ];
 
-  let checked = $state(0);
-  const loaded = () => checked++;
+  let count = $state(0);
+  const loaded = () => ++count;
 </script>
 
 <Carousel
@@ -35,11 +36,17 @@
   {custom}
   {loaded}
   {...rest}>
-  {#if check}
-    {#snippet check()}
-      <div class="relative font-semibold text-black/50">
-        <span class="absolute bottom-full left-2 mb-2">{checked} <sup>{dataset?.length}</sup></span>
-      </div>
-    {/snippet}
-  {/if}
+  {#snippet check()}
+    {#if checked}
+      <small
+        class={twMerge(
+          'absolute bottom-2 left-2',
+          'font-semibold text-black/50',
+          typeof checked === 'string' && checked
+        )}>
+        {count}
+        <sup>{dataset?.length}</sup>
+      </small>
+    {/if}
+  {/snippet}
 </Carousel>

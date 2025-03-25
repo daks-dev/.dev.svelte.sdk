@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import { onMount } from 'svelte';
   import { Tween } from 'svelte/motion';
   import { linear, quadInOut } from 'svelte/easing';
+  import { twMerge } from '../../tailwind/tailwind-merge.js';
   import Figure from '../../ui/figure/Figure.svelte';
   import lazyload from '../../app/lazyload.js';
   import { swipe, wheel } from '../../utils/index.js';
@@ -33,6 +33,8 @@
     progress,
     control,
     check,
+    before,
+    after,
     alt = '',
     native = false,
     loaded,
@@ -47,9 +49,8 @@
     __custom
   );
 
-  const isLink = !!rest.href;
-  const tag = isLink ? 'a' : __tag;
-  const controls = isLink ? [] : __controls;
+  const tag = rest.href ? 'a' : __tag;
+  const controls = rest.href ? [] : __controls;
 
   let total = $state(dataset.length);
 
@@ -166,6 +167,8 @@
   class={twMerge('vector-non-scaling-stroke linecap-round linejoin-round', className)}
   {...rest}>
   <div class="relative w-full">
+    {@render before?.()}
+
     <div
       bind:this={carousel}
       use:swipe={actionSwipe}
@@ -173,7 +176,7 @@
       class={twMerge(
         'w-full overflow-x-hidden',
         'select-none',
-        isLink ? 'cursor-pointer' : auto || wait ? 'cursor-wait' : 'cursor-ew-resize'
+        rest.href ? 'cursor-pointer' : auto || wait ? 'cursor-wait' : 'cursor-ew-resize'
       )}>
       <div
         bind:this={slider}
@@ -203,6 +206,11 @@
             alt={`${alt} [${idx}]`.trim()}
             {native}
             {loaded} />
+          {#if !native}
+            <link
+              rel="image"
+              href={data.src} />
+          {/if}
         {/each}
         {@render children?.(width, total, ratio)}
       </div>
@@ -241,5 +249,7 @@
     {:else if progress}
       {@render progress(tween, total, count)}
     {/if}
+
+    {@render after?.()}
   </div>
 </svelte:element>

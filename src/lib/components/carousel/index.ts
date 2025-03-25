@@ -41,8 +41,10 @@ export interface CarouselAttributes {
   native?: boolean;
   loaded?: Loaded;
   progress?: Snippet<[Tween<number>, number, number]> | true;
-  control?: Snippet<[() => void, () => void, () => void]>;
   check?: Snippet;
+  control?: Snippet<[() => void, () => void, () => void]>;
+  before?: Snippet;
+  after?: Snippet;
 }
 
 export { default as Carousel } from './Carousel.svelte';
